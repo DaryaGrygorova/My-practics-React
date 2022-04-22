@@ -37,3 +37,24 @@
   }
 }
 
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+} 
+
+.list__item {
+  outline: 1px solid red;
+}
+
+.list__item--color {
+  color:blue;
+}
+
+.list__item--inline{
+  display: inline;
+}
+
+.list__item--big-size {
+  font-size: 28px;
+}
