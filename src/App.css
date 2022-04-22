@@ -37,10 +37,3 @@
   }
 }
 
-.List {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  color:blue;
-  outline: 1px solid red;
-}
