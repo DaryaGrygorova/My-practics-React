@@ -59,3 +59,21 @@
 .list__item--big-size {
   font-size: 28px;
 }
+
+.nav-list {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100vw;
+  background-color: #282c34;
+}
+
+a {
+  text-decoration: none;
+  color: #ffffff;
+  transition: color 250ms ease-in
+}
+
+.nav-list__link:hover, .nav-list__link:focus {
+  color: greenyellow;
+}
