@@ -1,12 +1,14 @@
 import './styles.css';
-import Header from './header.js';
-import Fitches from './fitches.js';
+import Header from './header';
+import Fitches from './fitches';
+import Footer from './footer';
 
 const App = () => {
   return (
     <div className="App">
       <Header />
       <Fitches />
+      <Footer />
     </div>
   );
 };
