@@ -53,6 +53,7 @@
 
 .list__item--inline{
   display: inline;
+  background-color: aquamarine;
 }
 
 .list__item--big-size {
