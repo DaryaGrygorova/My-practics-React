@@ -1,13 +1,19 @@
 .App {
+  box-sizing: border-box;
   display: grid;
   grid-template-areas: 
   "header header"
   "sidebar content";
   grid-template-rows: 60px 1fr;
-  grid-template-columns: 2fr 10fr;
+  grid-template-columns: 4fr 10fr;
   grid-gap: 5px;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-size: calc(8px + 2vmin);
+}
 
-  font-size: calc(10px + 2vmin);
+h1 {
+  margin-left: 20px;
 }
 
 img {
@@ -24,31 +30,39 @@ img {
 
 .logo {
   pointer-events: none;
+  width: 40px;
+  height: 40px;
 }
 
 .header {
   grid-area: header;
   background-color: #282c34;
-  /* min-height: 100vh; */
-  /* display: flex;
-  flex-direction: column;
+  display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white; */
+padding: 15px;
+  color: white;
 }
 
 .sidebar {
   grid-area: sidebar;
+  padding: 15px;
   background-color: blueviolet;
 }
 
 .content {
   grid-area: content;
+  padding: 15px;
   outline: 1px solid green;
-
 }
 
 .footer {
   background-color: rgb(131, 85, 85);
+}
+
+.banner {
+  max-height: 150px;
+}
+
+.user__foto {
+  width: 160px;
 }
