@@ -2,15 +2,17 @@ import './App.css';
 import './App.css';
 import Header from './components/header.jsx';
 import Sidebar from './components/sidebar.jsx';
-import Content from './components/content.jsx';
+import Profile from './components/profile.jsx';
 import Footer from './components/footer.jsx';
 
 const App = () => {
   return (
-    <div className="App">
+    <div className="App-wrapper">
       <Header />
-      <Sidebar />
-      <Content />
+      <div className="main-container">
+        <Sidebar />
+        <Profile />
+      </div>
       <Footer />
     </div>
   );

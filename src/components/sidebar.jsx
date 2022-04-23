@@ -2,7 +2,7 @@ const Sidebar = () => {
   return (
           <aside className="sidebar">
         <nav className="nav">
-          <ul className="nav__list list">
+          <ul className="nav__list">
             <li className="nav__item">
               <a className="nav__link" href="" target="_blank" rel="noopener noreferrer">
                 Profile
@@ -25,13 +25,14 @@ const Sidebar = () => {
             </li>
           </ul>
         </nav>
-        <div className="settings">
-          <a className="nav__link" href="" target="_blank" rel="noopener noreferrer">
+        <div className="nav__settings">
+          <a className="nav__link nav__link--no-border" href="" target="_blank" rel="noopener noreferrer">
             Settings
           </a>
         </div>
       </aside>
   );
 };
+
 
 export default Sidebar;

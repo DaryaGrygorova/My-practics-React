@@ -1,21 +1,10 @@
-.App {
+.App-wrapper {
   box-sizing: border-box;
-  display: grid;
-  grid-template-areas: 
-  "header header"
-  "sidebar content"
-  "footer footer";
-  grid-template-rows: 80px 1fr 80px;
-  grid-template-columns: 4fr 10fr;
-  grid-gap: 5px;
-  max-width: 1200px;
-  margin: 0 auto;
   font-size: calc(8px + 2vmin);
 }
 
-h1 {
+h1, h2, p {
   margin: 0;
-  margin-left: 20px;
 }
 
 img {
@@ -24,55 +13,251 @@ img {
   height: auto;
 }
 
-.list {
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.logo {
-  pointer-events: none;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  overflow: hidden;
+.button {
+  padding: 10px;
+  min-width: 150px;
+  font-size: 20px;
+  font-weight: 600;
+  color:rgb(55, 7, 62);
+  background-color:rgba(138, 43, 226, .5);
+  border-radius: 4px;
+  transition: color 250ms linear;
 }
 
+.button:hover, .button:focus {
+  color:rgba(255, 255, 255, .8);
+  box-shadow: 0px 3px 1px rgb(0 0 0 / 10%),
+  0px 1px 2px rgb(0 0 0 / 8%),
+  0px 2px 2px rgb(0 0 0 / 12%);
+}
+
+.container {
+  margin: 0 auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  width: 1200px;
+}
+
+.main-container {
+  display: grid;
+  grid-template-areas: 
+  "sidebar content";
+  grid-template-rows: 1fr;
+  grid-template-columns: 2fr 10fr;
+  margin: 75px auto 0;
+  padding: 5px 15px;
+  width: 1200px;
+  grid-gap: 5px;
+}
+
+/* Хедер */
 .header {
-  grid-area: header;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
   background-color: #282c34;
-  display: flex;
-  align-items: center;
-padding: 15px;
-  color: white;
 }
 
+.header__container {
+display: flex;
+align-items: center;
+color: white;
+padding: 15px 0;
+}
+
+/* Логотип */
+.logo {
+  display: flex;
+  align-items: center ;
+  pointer-events: none;
+}
+
+.logo__img {
+width: 40px;
+height: 40px;
+border-radius: 80%;
+overflow: hidden;
+}
+
+.logo__text {
+  font-size: 30px;
+  font-weight: 900;
+    margin-left: 20px;
+}
+
+/* Бічна панель */
 .sidebar {
   grid-area: sidebar;
+  display: flex;
+  flex-direction: column;
   padding: 15px;
-  background-color: blueviolet;
+  background-color: rgba(138, 43, 226, .5);
 }
 
+/* .nav {
+  margin-bottom: ;
+} */
+
+/* .nav__item  {
+  margin-bottom: 30px;
+  
+} */
+
+.nav__link {
+  display: inline-block;
+  padding: 10px;
+  font-size: 24px;
+  font-weight: 500;
+  color:rgb(55, 7, 62);
+  border-bottom: 2px solid blueviolet;
+  transition: color 250ms linear, font-size 250ms linear;
+}
+
+.nav__link:hover, .nav__link:focus {
+  font-size: 30px;
+  color:bisque
+}
+
+.nav__link--no-border {
+    border-bottom: none;
+}
+
+/* Основний контент сторінки Профілю */
 .content {
   grid-area: content;
-  padding: 15px;
-  outline: 1px solid green;
-}
-
-.footer {
-  background-color: rgb(131, 85, 85);
-}
+} 
 
 .banner {
   max-height: 150px;
 }
 
-.user__photo {
-  width: 160px;
+.user {
+  position: relative;
+  display: flex;
+  padding: 15px;
+  min-height: 165px;
+  background-color: #e0e5f3;
 }
 
+.user__photo {
+  position: absolute;
+  top: -50px;
+  width: 180px;
+  padding: 2px;
+  border: 1px solid rgba(255, 255, 255, .8)
+}
+
+
+.user__description {
+  margin-left: 230px;
+}
+
+.user__name {
+  margin-bottom: 20px;
+  font-size: 36px;
+  font-weight: 900;
+  color: black;
+  text-align: center;
+}
+
+.user__about {
+  font-size: 24px;
+  color: rgba(40, 44, 52, .8);
+  font-style: italic;
+}
+
+/* Публікації */
+.posts {
+  padding: 15px;
+}
+
+.posts__title {
+  margin-bottom: 20px;
+  font-size: 36px;
+  font-weight: 900;
+  color:black;
+}
+.new-post {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.new-post::after {
+  content: '';
+  display: block;
+  height: 2px;
+  background-color:  #e0e5f3;
+}
+
+.new-post__input {
+  display: block;
+  margin-bottom: 20px;
+  padding: 10px;
+  max-width: 100%;
+  border: 1px solid #b1b7c5;
+  border-radius: 4px;
+  font-size: 20px;
+}
+
+.new-post__input::placeholder {
+  color:rgba(40, 44, 52, .8);
+}
+
+.new-post__button {
+  margin-left: auto;
+  margin-bottom: 20px;
+}
+
+.post__wrapper {
+  padding: 10px 10px;
+}
+
+.post__wrapper:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.post__wrapper:nth-child(2n) {
+background-color: #e0e5f3;
+}
+
+.post__description {
+  display: flex;
+  align-items: center;
+}
+
+.post__photo {
+  width: 80px;
+  height: 80px;
+  padding: 1px;
+  margin-right: 20px;
+  border-radius: 50%;
+  border: 1px solid #e0e5f3;
+  overflow: hidden;
+}
+
+.post__data {
+  font-size: 16px;
+  font-style: italic;
+  color:rgba(40, 44, 52, .8);
+}
+
+
+/* Футер */
 .footer {
-  grid-area: footer;
   background-color: #282c34;
   display: flex;
   align-items: center;
