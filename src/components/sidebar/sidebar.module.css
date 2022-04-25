@@ -1,8 +1,10 @@
 .sidebar {
+    display: flex;
+    flex-direction: column;
     grid-area: sidebar;
     position: sticky;
     top: 75px;
-    height: 90vh;
+    height: 91vh;
     padding: 15px;
     background-color: rgba(138, 43, 226, .5);
     margin-right: 5px;
@@ -39,4 +41,8 @@
 .current {
     font-size: 30px;
     color: rgb(249, 208, 157)
+}
+
+.settings {
+    margin-top: auto;
 }
