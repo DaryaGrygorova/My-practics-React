@@ -1,4 +1,7 @@
 .App-wrapper {
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  line-height: 1.17;
   box-sizing: border-box;
   font-size: calc(8px + 2vmin);
 }
