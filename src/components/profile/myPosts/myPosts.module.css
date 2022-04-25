@@ -1,0 +1,22 @@
+.wrapper {
+    padding: 15px;
+}
+
+.title {
+    margin-bottom: 20px;
+    font-size: 36px;
+    font-weight: 900;
+    color: black;
+}
+
+.item {
+    padding: 10px 10px;
+}
+
+.item:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+.item:nth-child(2n) {
+    background-color: #e0e5f3;
+}

@@ -1,6 +1,6 @@
 import styles from './user.module.css'
 
-const User = () => {
+const User = (props) => {
   return (
     <div>
     <div className={styles.wrapper}>
@@ -11,7 +11,7 @@ const User = () => {
         height="300"
       />
     </div>
-    <div className={styles.thunb}>
+    <div className={styles.thumb}>
         <img
           src="https://us.123rf.com/450wm/naschy/naschy1601/naschy160100001/50911392-vector-illustration-of-old-woman-in-purple-dress-with-walking-stick.jpg?ver=6"
           className={styles.photo}
@@ -20,8 +20,8 @@ const User = () => {
           height="250"
         />
         <div className={styles.description}>
-          <h2 className={styles.name}>Jenny Docker</h2>
-          <p className={styles.about}>Pretty ukrainian lady</p>
+          <h2 className={styles.name}>{props.name}</h2>
+          <p className={styles.about}>{props.about}</p>
         </div>
       </div>
 </div>

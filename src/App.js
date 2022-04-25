@@ -1,8 +1,8 @@
 import './App.css';
 import './App.css';
-import Header from './components/header.jsx';
-import Sidebar from './components/sidebar.jsx';
-import Profile from './components/profile.jsx';
+import Header from './components/header/header';
+import Sidebar from './components/sidebar/sidebar';
+import Profile from './components/profile/profile';
 
 const App = () => {
   return (
@@ -10,7 +10,7 @@ const App = () => {
       <Header />
       <div className="main-container">
         <Sidebar />
-        <Profile />
+        <Profile name="Jolly Docker" about="Pretty ukrainian lady"/>
       </div>
     </div>
   );
