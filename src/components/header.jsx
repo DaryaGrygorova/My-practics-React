@@ -1,7 +1,9 @@
+import styles from "./header.module.css"
+
 const Header = () => {
   return (
-    <header className="header">
-      <div className="container header__container">
+    <header className={styles.header}>
+      <div className={`${styles.container} container`}>
         <div className="logo">
           <img
             className="logo__img"

@@ -1,0 +1,38 @@
+.banner {
+    max-height: 150px;
+}
+
+.wrapper {
+    position: relative;
+    display: flex;
+    padding: 15px;
+    min-height: 165px;
+    background-color: #e0e5f3;
+}
+
+.photo {
+    position: absolute;
+    top: -50px;
+    width: 180px;
+    padding: 2px;
+    border: 1px solid rgba(255, 255, 255, .8)
+}
+
+.description {
+    margin-left: 230px;
+}
+
+.name {
+    margin-bottom: 20px;
+    font-size: 36px;
+    font-weight: 900;
+    color: black;
+    text-align: center;
+}
+
+.about {
+    font-size: 24px;
+    color: rgba(40, 44, 52, .8);
+    font-style: italic;
+}
+

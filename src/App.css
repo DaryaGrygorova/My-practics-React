@@ -29,7 +29,7 @@ ul {
   min-width: 150px;
   font-size: 20px;
   font-weight: 600;
-  color:rgb(55, 7, 62);
+  color:rgb(249, 208, 157);
   background-color:rgba(138, 43, 226, .5);
   border-radius: 4px;
   transition: color 250ms linear;
@@ -55,27 +55,10 @@ ul {
   "sidebar content";
   grid-template-rows: 1fr;
   grid-template-columns: 2fr 10fr;
+  position: relative;
   margin: 75px auto 0;
-  padding: 5px 15px;
+  padding: 0 15px;
   width: 1200px;
-  grid-gap: 5px;
-}
-
-/* Хедер */
-.header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 10;
-  background-color: #282c34;
-}
-
-.header__container {
-display: flex;
-align-items: center;
-color: white;
-padding: 15px 0;
 }
 
 /* Логотип */
@@ -98,169 +81,15 @@ overflow: hidden;
     margin-left: 20px;
 }
 
-/* Бічна панель */
-.sidebar {
-  grid-area: sidebar;
-  display: flex;
-  flex-direction: column;
-  padding: 15px;
-  background-color: rgba(138, 43, 226, .5);
-}
-
-/* .nav {
-  margin-bottom: ;
-} */
-
-/* .nav__item  {
-  margin-bottom: 30px;
-  
-} */
-
-.nav__link {
-  display: inline-block;
-  padding: 10px;
-  font-size: 24px;
-  font-weight: 500;
-  color:rgb(55, 7, 62);
-  border-bottom: 2px solid blueviolet;
-  transition: color 250ms linear, font-size 250ms linear;
-}
-
-.nav__link:hover, .nav__link:focus {
-  font-size: 30px;
-  color:bisque
-}
-
-.nav__link--no-border {
-    border-bottom: none;
-}
-
-/* Основний контент сторінки Профілю */
 .content {
   grid-area: content;
 } 
 
-.banner {
-  max-height: 150px;
-}
-
-.user {
-  position: relative;
-  display: flex;
-  padding: 15px;
-  min-height: 165px;
-  background-color: #e0e5f3;
-}
-
-.user__photo {
-  position: absolute;
-  top: -50px;
-  width: 180px;
-  padding: 2px;
-  border: 1px solid rgba(255, 255, 255, .8)
-}
-
-
-.user__description {
-  margin-left: 230px;
-}
-
-.user__name {
-  margin-bottom: 20px;
-  font-size: 36px;
-  font-weight: 900;
-  color: black;
-  text-align: center;
-}
-
-.user__about {
-  font-size: 24px;
-  color: rgba(40, 44, 52, .8);
-  font-style: italic;
-}
-
-/* Публікації */
-.posts {
-  padding: 15px;
-}
-
-.posts__title {
-  margin-bottom: 20px;
-  font-size: 36px;
-  font-weight: 900;
-  color:black;
-}
-.new-post {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
-}
-
-.new-post::after {
-  content: '';
-  display: block;
-  height: 2px;
-  background-color:  #e0e5f3;
-}
-
-.new-post__input {
-  display: block;
-  margin-bottom: 20px;
-  padding: 10px;
-  max-width: 100%;
-  border: 1px solid #b1b7c5;
-  border-radius: 4px;
-  font-size: 20px;
-}
-
-.new-post__input::placeholder {
-  color:rgba(40, 44, 52, .8);
-}
-
-.new-post__button {
-  margin-left: auto;
-  margin-bottom: 20px;
-}
-
-.post__wrapper {
-  padding: 10px 10px;
-}
-
-.post__wrapper:not(:last-child) {
-  margin-bottom: 20px;
-}
-
-.post__wrapper:nth-child(2n) {
-background-color: #e0e5f3;
-}
-
-.post__description {
-  display: flex;
-  align-items: center;
-}
-
-.post__photo {
-  width: 80px;
-  height: 80px;
-  padding: 1px;
-  margin-right: 20px;
-  border-radius: 50%;
-  border: 1px solid #e0e5f3;
-  overflow: hidden;
-}
-
-.post__data {
-  font-size: 16px;
-  font-style: italic;
-  color:rgba(40, 44, 52, .8);
-}
-
-
 /* Футер */
-.footer {
+/* .footer {
   background-color: #282c34;
   display: flex;
   align-items: center;
   padding: 15px;
   color: #ffffff
-}
+} */

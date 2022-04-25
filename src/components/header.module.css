@@ -1,0 +1,22 @@
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    background-color: #282c34;
+}
+
+.header::after {
+    content: '';
+    display: block;
+    height: 5px;
+    background-color: #fff;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    color: white;
+    padding: 15px 0;
+}

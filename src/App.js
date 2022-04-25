@@ -3,7 +3,6 @@ import './App.css';
 import Header from './components/header.jsx';
 import Sidebar from './components/sidebar.jsx';
 import Profile from './components/profile.jsx';
-import Footer from './components/footer.jsx';
 
 const App = () => {
   return (
@@ -13,7 +12,6 @@ const App = () => {
         <Sidebar />
         <Profile />
       </div>
-      <Footer />
     </div>
   );
 };
