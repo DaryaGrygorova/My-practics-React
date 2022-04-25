@@ -1,8 +1,9 @@
-.banner {
-    max-height: 150px;
+.wrapper {
+    height: 300px; 
+    contain: cover;
 }
 
-.wrapper {
+.thunb {
     position: relative;
     display: flex;
     padding: 15px;
