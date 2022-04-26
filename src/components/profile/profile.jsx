@@ -4,7 +4,7 @@ import User from "./user";
 
 const Profile = (props) => {
   return (
-    <main className="profile content">
+    <main className="content">
       <User name={props.name} about={props.about}/>
       <MyPosts name={props.name} />
     </main>

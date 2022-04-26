@@ -3,7 +3,6 @@
   font-size: 20px;
   line-height: 1.17;
   box-sizing: border-box;
-  font-size: calc(8px + 2vmin);
 }
 
 h1, h2, p {
@@ -60,7 +59,7 @@ ul {
   grid-template-areas: 
   "sidebar content";
   grid-template-rows: 1fr;
-  grid-template-columns: 2fr 10fr;
+  grid-template-columns: 210px auto;
   position: relative;
   margin: 75px auto 0;
   padding: 0 15px;
