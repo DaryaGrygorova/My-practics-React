@@ -6,22 +6,22 @@ const Sidebar = () => {
        <nav className={styles.nav}>
         <ul className={styles.list}>
           <li className={styles.item}>
-              <a className={`${styles.link} ${styles.current}`} href="#s" target="_blank" rel="noopener noreferrer">
+              <a className={`${styles.link} ${styles.current}`} href="/profile" >
                 Profile
               </a>
             </li>
             <li className={styles.item}>
-              <a className={styles.link} href="#s" target="_blank" rel="noopener noreferrer">
+              <a className={styles.link} href="/dialogs" >
                 Messages
               </a>
             </li>
             <li className={styles.item}>
-              <a className={styles.link} href="#s" target="_blank" rel="noopener noreferrer">
+              <a className={styles.link} href="/news" >
                 News
               </a>
             </li>
             <li className={styles.item}>
-              <a className={styles.link} href="#s" target="_blank" rel="noopener noreferrer">
+              <a className={styles.link} href="/music" >
                 Music
               </a>
             </li>

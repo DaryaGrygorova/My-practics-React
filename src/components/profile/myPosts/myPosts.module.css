@@ -18,5 +18,5 @@
 }
 
 .item:nth-child(2n) {
-    background-color: #e0e5f3;
+    background-color: rgba(224, 229, 243, .5);
 }

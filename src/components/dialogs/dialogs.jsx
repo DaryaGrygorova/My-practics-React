@@ -1,5 +1,4 @@
 import Contact from './contact';
-import Message from './message';
 import styles from "./dialogs.module.css"
 import Chat from './chat';
 
