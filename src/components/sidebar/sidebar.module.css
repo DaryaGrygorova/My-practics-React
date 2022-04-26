@@ -38,7 +38,7 @@
     border-bottom: none;
 }
 
-.current {
+.active {
     font-size: 30px;
     color: rgb(249, 208, 157)
 }

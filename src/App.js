@@ -4,6 +4,7 @@ import Sidebar from './components/sidebar/sidebar';
 import Profile from './components/profile/profile';
 import Dialogs from './components/dialogs/dialogs';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import StartPage from './startPage/startPage';
 
 const App = () => {
   return (
@@ -13,7 +14,7 @@ const App = () => {
       <div className="main-container">
         <Sidebar />
         <Routes>
-          <Route path='/' element={<Profile name='Jolly Docker' about='Pretty ukrainian lady' />} />
+          <Route path='/' element={<StartPage />} />
           <Route path='/profile' element={<Profile name='Jolly Docker' about='Pretty ukrainian lady' />} />
           <Route path='/dialogs' element={<Dialogs />} />
           <Route

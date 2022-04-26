@@ -1,4 +1,5 @@
 import styles from './sidebar.module.css'
+import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
   return (
@@ -6,31 +7,31 @@ const Sidebar = () => {
        <nav className={styles.nav}>
         <ul className={styles.list}>
           <li className={styles.item}>
-              <a className={`${styles.link} ${styles.current}`} href="/profile" >
+              <Link className={styles.link} to="/profile" >
                 Profile
-              </a>
+              </Link>
             </li>
             <li className={styles.item}>
-              <a className={styles.link} href="/dialogs" >
+              <Link className={styles.link} to="/dialogs" >
                 Messages
-              </a>
+              </Link>
             </li>
             <li className={styles.item}>
-              <a className={styles.link} href="/news" >
+              <Link className={styles.link} to="/news" >
                 News
-              </a>
+              </Link>
             </li>
             <li className={styles.item}>
-              <a className={styles.link} href="/music" >
+              <Link className={styles.link} to="/music" >
                 Music
-              </a>
+              </Link>
             </li>
           </ul>
         </nav>
         <div className={styles.settings}>
-          <a className={`${styles.link} ${styles.linkNoBorder}`} href="#s" target="_blank" rel="noopener noreferrer">
+          <Link className={`${styles.link} ${styles.linkNoBorder}`} to="/settings" target="_blank" rel="noopener noreferrer">
             Settings
-          </a>
+          </Link>
         </div>
       </aside>
   );
