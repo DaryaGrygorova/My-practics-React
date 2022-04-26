@@ -7,7 +7,7 @@ const MyPosts = (props) => {
     <div className={styles.wrapper}>
       <h2 className={styles.title}>My posts</h2>
       <NewPost />
-      <ul className={styles.list}>
+      <ul>
         <li className={styles.item}>
           <Post message="Hi, world!"  name={props.name} likeCounter="15"/>
         </li>

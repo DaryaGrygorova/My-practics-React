@@ -1,37 +1,37 @@
 import styles from './sidebar.module.css'
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const Sidebar = () => {
   return (
     <aside className={styles.sidebar}>
-       <nav className={styles.nav}>
-        <ul className={styles.list}>
+       <nav>
+        <ul>
           <li className={styles.item}>
-              <Link className={styles.link} to="/profile" >
+              <NavLink className={({isActive}) => isActive ? 'currentPage' : ''} to="/profile" >
                 Profile
-              </Link>
+              </NavLink>
             </li>
             <li className={styles.item}>
-              <Link className={styles.link} to="/dialogs" >
+              <NavLink className={({isActive}) => isActive ? 'currentPage' : ''} to="/dialogs" >
                 Messages
-              </Link>
+              </NavLink>
             </li>
             <li className={styles.item}>
-              <Link className={styles.link} to="/news" >
+              <NavLink className={({isActive}) => isActive ? 'currentPage' : ''} to="/news" >
                 News
-              </Link>
+              </NavLink>
             </li>
             <li className={styles.item}>
-              <Link className={styles.link} to="/music" >
+              <NavLink className={({isActive}) => isActive ? 'currentPage' : ''} to="/music" >
                 Music
-              </Link>
+              </NavLink>
             </li>
           </ul>
         </nav>
         <div className={styles.settings}>
-          <Link className={`${styles.link} ${styles.linkNoBorder}`} to="/settings" target="_blank" rel="noopener noreferrer">
+          <NavLink className={({isActive}) => isActive ? 'currentPage' : ''} to="/settings" >
             Settings
-          </Link>
+          </NavLink>
         </div>
       </aside>
   );
