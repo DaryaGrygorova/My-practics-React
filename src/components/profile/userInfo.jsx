@@ -1,6 +1,6 @@
-import styles from './user.module.css'
+import styles from './userInfo.module.css'
 
-const User = (props) => {
+const UserInfo = (props) => {
   return (
     <div>
     <div className={styles.wrapper}>
@@ -15,7 +15,7 @@ const User = (props) => {
         <img
           src="https://us.123rf.com/450wm/naschy/naschy1601/naschy160100001/50911392-vector-illustration-of-old-woman-in-purple-dress-with-walking-stick.jpg?ver=6"
           className={styles.photo}
-          alt="User"
+          alt="UserInfo"
           with="260"
           height="250"
         />
@@ -28,4 +28,4 @@ const User = (props) => {
   );
 };
 
-export default User;
+export default UserInfo;
