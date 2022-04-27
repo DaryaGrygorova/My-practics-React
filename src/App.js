@@ -15,8 +15,8 @@ const App = () => {
         <Sidebar />
         <Routes>
           <Route path='/' element={<StartPage />} />
-          <Route path='/profile' element={<Profile name='Jolly Docker' about='Pretty ukrainian lady' />} />
-          <Route path='/dialogs' element={<Dialogs />} />
+          <Route path='/profile/*' element={<Profile name='Jolly Docker' about='Pretty ukrainian lady' />} />
+          <Route path='/dialogs/*' element={<Dialogs />} />
           <Route
             path="*"
             element={
