@@ -1,6 +1,6 @@
 import styles from './post.module.css';
 
-const Post = props => {
+const Post = (props) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.description}>
@@ -13,7 +13,7 @@ const Post = props => {
         />
         <div className={styles.about}>
           <h2 className={styles.name}>{props.name}</h2>
-          <p className={styles.data}>Дата и время</p>
+          <p className={styles.data}>{props.time}</p>
         </div>
       </div>
       <p className={styles.text}>{props.message}</p>
