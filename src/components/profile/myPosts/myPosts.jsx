@@ -2,6 +2,13 @@ import Post from './post';
 import NewPost from './newPost';
 import styles from './myPosts.module.css';
 
+let PostsData = [
+  {message: 'Hi, world!', likeCounter: '15'},
+  {message: 'It\'s my first post', likeCounter: '5'},
+  {message: 'How are you?', likeCounter: '7'},
+]
+
+
 const MyPosts = (props) => {
   return (
     <div className={styles.wrapper}>
@@ -9,13 +16,13 @@ const MyPosts = (props) => {
       <NewPost />
       <ul>
         <li className={styles.item}>
-          <Post message="Hi, world!"  name={props.name} likeCounter="15"/>
+          <Post message={PostsData[0].message} name={props.name} likeCounter={PostsData[0].likeCounter} />
         </li>
         <li className={styles.item} >
-          <Post message="It's my first post"  name={props.name} likeCounter="5"/>
+          <Post message={PostsData[1].message}  name={props.name} likeCounter={PostsData[0].likeCounter} />
         </li>
         <li className={styles.item}>
-          <Post message="How are you?" name={props.name} likeCounter="7"/>
+          <Post message={PostsData[2].message} name={props.name} likeCounter={PostsData[0].likeCounter} />
         </li>
       </ul>
     </div>
