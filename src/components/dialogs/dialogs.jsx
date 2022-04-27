@@ -8,13 +8,13 @@ const Dialogs = (props) => {
       <main className={styles.container}>
         <div className={styles.contacts}>
           <h1 className={styles.title}>Dialogs</h1>
-          <Contact name="Sara Connor" urltext='Connor' />
-          <Contact name="Lisa Fahrenheit" urltext='Fahrenheit'/>
-          <Contact name="Rose Friedman" urltext='Friedman'/>
-          <Contact name="Frank Sinatra" urltext='Sinatra'/>
-          <Contact name="John Silver" urltext='Silver'/>
-          <Contact name="Tomas Fisher" urltext='Fisher'/>
-          <Contact name="Lili Walker" urltext='Walker' />
+          <Contact name="Sara Connor" id='Connor' />
+          <Contact name="Lisa Fahrenheit" id='Fahrenheit'/>
+          <Contact name="Rose Friedman" id='Friedman'/>
+          <Contact name="Frank Sinatra" id='Sinatra'/>
+          <Contact name="John Silver" id='Silver'/>
+          <Contact name="Tomas Fisher" id='Fisher'/>
+          <Contact name="Lili Walker" id='Walker' />
         </div>
         <span className={styles.line}></span>
         <Chat name="Sara Connor"/>
