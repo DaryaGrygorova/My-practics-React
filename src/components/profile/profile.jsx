@@ -1,5 +1,5 @@
 import MyPosts from "./myPosts/myPosts";
-import User from "./userInfo";
+import User from "./userInfo/userInfo";
 
 
 const Profile = (props) => {

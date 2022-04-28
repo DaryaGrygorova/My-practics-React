@@ -1,5 +1,5 @@
-import Post from './post';
-import NewPost from './newPost';
+import Post from './post/post';
+import NewPost from './newPost/newPost';
 import styles from './myPosts.module.css';
 
 let PostsData = [

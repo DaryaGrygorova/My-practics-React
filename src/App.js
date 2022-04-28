@@ -4,7 +4,7 @@ import Sidebar from './components/sidebar/sidebar';
 import Profile from './components/profile/profile';
 import Dialogs from './components/dialogs/dialogs';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import StartPage from './startPage/startPage';
+import StartPage from './components/startPage/startPage';
 
 const App = () => {
   return (

@@ -1,6 +1,5 @@
 import styles from "./chat.module.css"
-import Message from './message';
-import Contact from './contact';
+import Message from '../message/message';
 
 let MessData = [
   {id: 1, message: 'Hello!',  name: 'Frank Sinatra', time: '15:20'},

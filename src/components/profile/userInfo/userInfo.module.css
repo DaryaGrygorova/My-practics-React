@@ -1,6 +1,6 @@
 .wrapper {
-    height: 300px; 
-    contain: cover;
+    height: 300px;
+    object-fit: cover ;
 }
 
 .thumb {

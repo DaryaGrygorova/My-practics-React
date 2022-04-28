@@ -1,7 +1,7 @@
-import Contact from './contact';
+import Contact from './contact/contact';
 import styles from "./dialogs.module.css"
-import Chat from './chat';
-import Post from '../profile/myPosts/post';
+import Chat from './chat/chat';
+import Post from '../profile/myPosts/post/post';
 
 let ContactsData = [
   { name: 'Sara Connor', id: 'Connor'},
