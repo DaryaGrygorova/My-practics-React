@@ -3,7 +3,7 @@ import styles from "./dialogs.module.css"
 import Chat from './chat/chat';
 
 const Dialogs = (props) => {
-  let ContactsElements = props.ContactsData.map ( OneContact => <Contact id={OneContact.id} name={OneContact.name} /> );
+  let ContactsElements = props.States.ContactsData.map ( OneContact => <Contact id={OneContact.id} name={OneContact.name} /> );
   return (
     <div className="content">
       <main className={styles.container}>
@@ -12,7 +12,7 @@ const Dialogs = (props) => {
           { ContactsElements }
         </div>
         <span className={styles.line}></span>
-        <Chat MessData={props.MessData}/>
+        <Chat MessData={props.States.MessData}/>
       </main>
     </div>
   );

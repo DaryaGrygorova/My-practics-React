@@ -5,13 +5,13 @@ import styles from './profile.module.css';
 
 
 const Profile = (props) => {
-  let MyPostsElements = props.PostsData.map ( PostItem => <MyPosts id={PostItem.id} name={PostItem.name} message={PostItem.message} likeCounter={PostItem.likeCounter} time={PostItem.time}/> );
+  let MyPostsElements = props.States.PostsData.map ( PostItem => <MyPosts id={PostItem.id} name={PostItem.name} message={PostItem.message} likeCounter={PostItem.likeCounter} time={PostItem.time}/> );
   return (
     <main className="content">
-      <User name={props.UserName} about={props.about}/>
+      <User name={props.States.Users[0].userName} about={props.States.Users[0].about}/>
       <div className={styles.wrapper}>
         <h2 className={styles.title}>My posts</h2>
-        <NewPost />
+        <NewPost addPost={props.addPost}/>
         { MyPostsElements }
       </div>
     </main>

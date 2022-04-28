@@ -5,6 +5,7 @@ import Profile from './components/profile/profile';
 import Dialogs from './components/dialogs/dialogs';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import StartPage from './components/startPage/startPage';
+import { addPost } from './Redux/State';
 
 const App = (props) => {
   return (
@@ -14,9 +15,12 @@ const App = (props) => {
       <div className="main-container">
         <Sidebar />
         <Routes>
-          <Route path='/' element={<StartPage />} />
-          <Route path='/profile/*' element={<Profile PostsData={props.State.PostsData} />} />
-          <Route path='/dialogs/*' element={<Dialogs ContactsData={props.State.ContactsData} MessData={props.State.MessData}/>} />
+          <Route path='/'
+                 element={<StartPage />} />
+          <Route path='/profile/*'
+                 element={<Profile States={props.State.ProfilePage} addPost={props.addPost}/>} />
+          <Route path='/dialogs/*'
+                 element={<Dialogs States={props.State.MessagePage}/>} />
           <Route
             path="*"
             element={
