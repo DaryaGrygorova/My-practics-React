@@ -6,7 +6,11 @@ import Dialogs from './components/dialogs/dialogs';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import StartPage from './components/startPage/startPage';
 
-const App = () => {
+
+
+
+
+const App = (props) => {
   return (
     <BrowserRouter>
     <div className="App-wrapper">
@@ -15,8 +19,8 @@ const App = () => {
         <Sidebar />
         <Routes>
           <Route path='/' element={<StartPage />} />
-          <Route path='/profile/*' element={<Profile name='Jolly Docker' about='Pretty ukrainian lady' />} />
-          <Route path='/dialogs/*' element={<Dialogs />} />
+          <Route path='/profile/*' element={<Profile PostsData={props.PostsData} />} />
+          <Route path='/dialogs/*' element={<Dialogs ContactsData={props.ContactsData} MessData={props.MessData}/>} />
           <Route
             path="*"
             element={

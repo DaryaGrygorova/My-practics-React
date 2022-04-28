@@ -1,22 +1,9 @@
 import Contact from './contact/contact';
 import styles from "./dialogs.module.css"
 import Chat from './chat/chat';
-import Post from '../profile/myPosts/post/post';
-
-let ContactsData = [
-  { name: 'Sara Connor', id: 'Connor'},
-  { name: 'Lisa Fahrenheit', id: 'Fahrenheit'},
-  { name: 'Rose Friedman', id: 'Friedman'},
-  { name: 'Frank Sinatra', id: 'Sinatra'},
-  { name: 'John Silver', id: 'Silver'},
-  { name: 'Tomas Fisher', id: 'Fisher'},
-  { name: 'Lili Walker', id: 'Walker'},
-];
-
-let ContactsElements = ContactsData.map ( OneContact => <Contact id={OneContact.id} name={OneContact.name} /> );
-
 
 const Dialogs = (props) => {
+  let ContactsElements = props.ContactsData.map ( OneContact => <Contact id={OneContact.id} name={OneContact.name} /> );
   return (
     <div className="content">
       <main className={styles.container}>
@@ -25,7 +12,7 @@ const Dialogs = (props) => {
           { ContactsElements }
         </div>
         <span className={styles.line}></span>
-        <Chat name={ContactsData[3].name}/>
+        <Chat MessData={props.MessData}/>
       </main>
     </div>
   );
