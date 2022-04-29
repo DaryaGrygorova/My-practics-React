@@ -1,6 +1,7 @@
 import Contact from './contact/contact';
 import styles from "./dialogs.module.css"
 import Chat from './chat/chat';
+import { addMess } from '../../Redux/State';
 
 const Dialogs = (props) => {
   let ContactsElements = props.States.ContactsData.map ( OneContact => <Contact id={OneContact.id} name={OneContact.name} /> );
@@ -12,7 +13,7 @@ const Dialogs = (props) => {
           { ContactsElements }
         </div>
         <span className={styles.line}></span>
-        <Chat MessData={props.States.MessData}/>
+        <Chat MessData={props.States.MessData} addMess={props.addMess}/>
       </main>
     </div>
   );

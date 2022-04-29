@@ -6,7 +6,6 @@ let State = {
       { id: 1, name: 'Jolly Docker', message: 'Hi, world!', time: '14:48', likeCounter: 15 },
       { id: 2, name: 'Jolly Docker', message: 'It\'s my first post', time: '14:55', likeCounter: 5 },
       { id: 3, name: 'Jolly Docker', message: 'How are you?', time: '14:58', likeCounter: 7 },
-      { id: 4, name: 'Jolly Docker', message: 'suka', time: '14:58', likeCounter: 100},
     ],
     Users: [
       {id: 1, userName: 'Jolly Docker', about: 'Pretty lady'}
@@ -36,10 +35,16 @@ let State = {
   }
 };
 
-export let addPost = (newMess) => {
-  let newPost = { id: 5, name: 'Jolly Docker', message: (newMess), time: '14:58', likeCounter: 0 };
+export let addPost = (postText) => {
+  let newPost = { id: 5, name: 'Jolly Docker', message: (postText), time: '14:58', likeCounter: 0 };
   State.ProfilePage.PostsData.push(newPost);
  rerenderEntireTree(State);
+};
+
+export let addMess = (messText) => {
+  let newMess = { id: 10, name: 'Frank Sinatra', message: (messText), time: '15:58' };
+  State.MessagePage.MessData.push(newMess);
+  rerenderEntireTree(State);
 };
 
 export default State;

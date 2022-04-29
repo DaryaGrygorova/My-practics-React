@@ -3,14 +3,14 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { addPost } from './Redux/State';
+import { addMess, addPost } from './Redux/State';
 
 
 export let rerenderEntireTree = (State) => {
   const root = ReactDOM.createRoot(document.getElementById('root'));
   root.render(
     <React.StrictMode>
-      <App State={State} addPost={addPost} />
+      <App State={State} addPost={addPost} addMess ={addMess}/>
     </React.StrictMode>
   );
 };

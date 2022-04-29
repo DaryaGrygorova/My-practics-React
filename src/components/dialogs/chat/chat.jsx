@@ -1,8 +1,16 @@
 import styles from "./chat.module.css"
 import Message from '../message/message';
+import React from 'react';
 
 const Chat = (props) => {
   let MessElements = props.MessData.map ( Mess => <Message id={Mess.id} message={Mess.message} name={Mess.name} time={Mess.time}/> );
+
+  let newMessElement = React.createRef();
+  let addMess = () => {
+    let text = newMessElement.current.value;
+    props.addMess(text);
+  }
+
   return (
     <div className={styles.container}>
     <div className={styles.title}>
@@ -20,13 +28,14 @@ const Chat = (props) => {
   </div>
       <form className={styles.thumb}>
             <textarea
+              ref={newMessElement}
               className={styles.input}
               name="new_message"
               rows="1"
               placeholder="Введите текст..."
               required>
             </textarea>
-        <button className="button" type="submit">
+        <button className="button" onClick={addMess}>
           Send
         </button>
       </form>
