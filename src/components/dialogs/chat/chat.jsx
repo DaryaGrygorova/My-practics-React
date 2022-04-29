@@ -9,6 +9,7 @@ const Chat = (props) => {
   let addMess = () => {
     let text = newMessElement.current.value;
     props.addMess(text);
+    newMessElement.current.value = '';
   }
 
   return (
@@ -35,7 +36,7 @@ const Chat = (props) => {
               placeholder="Введите текст..."
               required>
             </textarea>
-        <button className="button" onClick={addMess}>
+        <button className="button" type="submit" onClick={addMess}>
           Send
         </button>
       </form>

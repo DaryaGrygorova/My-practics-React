@@ -22,7 +22,7 @@ const NewPost = (props) => {
           required
         ></textarea>
         <button className={`${styles.button} button`}
-                // type="submit"
+                type="submit"
                 onClick={addPost}>
                 Send
         </button>
