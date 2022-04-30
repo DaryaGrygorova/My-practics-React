@@ -4,7 +4,7 @@ import reportWebVitals from './reportWebVitals';
 import './index.css';
 import State from './Redux/State';
 import App from './App';
-import { addMess, addPost, updateNewPostText, updateNewMessText } from './Redux/State';
+import { subscribe, addMess, addPost, updateNewPostText, updateNewMessText } from './Redux/State';
 
 
 
@@ -19,10 +19,10 @@ root.render(
     </React.StrictMode>
   );
 
-export let rerenderEntireTree = (upState) => {
+let rerenderEntireTree = (State) => {
   root.render(
     <React.StrictMode>
-      <App State={upState}
+      <App State={State}
            addPost={addPost}
            addMess ={addMess}
            updateNewPostText={updateNewPostText}
@@ -30,6 +30,8 @@ export let rerenderEntireTree = (upState) => {
     </React.StrictMode>
   );
 };
+
+subscribe (rerenderEntireTree)
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

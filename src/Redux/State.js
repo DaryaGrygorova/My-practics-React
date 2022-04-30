@@ -1,4 +1,4 @@
-import { rerenderEntireTree } from '../index';
+let rerenderEntireTree = () => {};
 
 let State = {
   ProfilePage: {
@@ -37,30 +37,32 @@ let State = {
   }
 };
 
-window.state = State;
-
-export let updateNewPostText = (newText) => {
+export const updateNewPostText = (newText) => {
   State.ProfilePage.NewPostText = newText;
   rerenderEntireTree(State);
 };
 
-export let addPost = () => {
+export const addPost = () => {
   let newPost = { id: 5, name: 'Jolly Docker', message: (State.ProfilePage.NewPostText), time: '14:58', likeCounter: 0 };
   State.ProfilePage.PostsData.push(newPost);
   State.ProfilePage.NewPostText = '';
   rerenderEntireTree(State);
 };
 
-export let updateNewMessText = (newMessText) => {
+export const updateNewMessText = (newMessText) => {
   State.MessagePage.newMessText = newMessText;
   rerenderEntireTree(State);
 };
 
-export let addMess = () => {
+export const addMess = () => {
   let newMess = { id: 10, name: 'Frank Sinatra', message: (State.MessagePage.newMessText), time: '15:58' };
   State.MessagePage.MessData.push(newMess);
   rerenderEntireTree(State);
   State.MessagePage.newMessText = '';
+};
+
+export const subscribe = (observer) => {
+  rerenderEntireTree = observer;
 };
 
 export default State;
