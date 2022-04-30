@@ -5,10 +5,14 @@ const NewPost = (props) => {
 
   let newPostElement = React.createRef();
 
+  let handleChange = () => {
+    let newText = newPostElement.current.value;
+    props.updateNewPostText (newText);
+    // props.updateNewPostText ('');
+  };
+
   let addPost = () => {
-    let text = newPostElement.current.value;
-    props.addPost(text);
-    newPostElement.current.value = '';
+    props.addPost();
   }
 
  return (
@@ -19,11 +23,14 @@ const NewPost = (props) => {
           className={styles.input}
           name="new_post"
           rows="3"
-          placeholder="Введите текст..."
+          placeholder="Enter the text"
           required
-        ></textarea>
+          value = {props.newPostText}
+          onChange={handleChange}
+
+        />
         <button className={`${styles.button} button`}
-                type="submit"
+                // type="submit"
                 onClick={addPost}>
                 Send
         </button>

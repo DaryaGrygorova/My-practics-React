@@ -7,10 +7,12 @@ const Chat = (props) => {
 
   let newMessElement = React.createRef();
   let addMess = () => {
-    let text = newMessElement.current.value;
-    props.addMess(text);
-    newMessElement.current.value = '';
+      props.addMess();
   }
+  let onChangeMessText = () => {
+    let text = newMessElement.current.value
+    props.updateNewMessText (text);
+}
 
   return (
     <div className={styles.container}>
@@ -34,8 +36,9 @@ const Chat = (props) => {
               name="new_message"
               rows="1"
               placeholder="Введите текст..."
-              required>
-            </textarea>
+              required
+              value={props.newMessText}
+              onChange={onChangeMessText}/>
         <button className="button" type="submit" onClick={addMess}>
           Send
         </button>

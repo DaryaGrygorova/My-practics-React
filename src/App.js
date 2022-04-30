@@ -5,7 +5,6 @@ import Profile from './components/profile/profile';
 import Dialogs from './components/dialogs/dialogs';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import StartPage from './components/startPage/startPage';
-import { addMess, addPost } from './Redux/State';
 
 const App = (props) => {
   return (
@@ -18,9 +17,9 @@ const App = (props) => {
           <Route path='/'
                  element={<StartPage />} />
           <Route path='/profile/*'
-                 element={<Profile States={props.State.ProfilePage} addPost={props.addPost}/>} />
+                 element={<Profile States={props.State.ProfilePage} addPost={props.addPost} updateNewPostText={props.updateNewPostText} />} />
           <Route path='/dialogs/*'
-                 element={<Dialogs States={props.State.MessagePage} addMess={props.addMess}/>} />
+                 element={<Dialogs States={props.State.MessagePage} addMess={props.addMess} updateNewMessText={props.updateNewMessText}/>} />
           <Route
             path="*"
             element={
