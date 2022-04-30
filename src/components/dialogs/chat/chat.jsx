@@ -6,13 +6,16 @@ const Chat = (props) => {
   let MessElements = props.MessData.map ( Mess => <Message id={Mess.id} message={Mess.message} name={Mess.name} time={Mess.time}/> );
 
   let newMessElement = React.createRef();
-  let addMess = () => {
-      props.addMess();
-  }
+
   let onChangeMessText = () => {
-    let text = newMessElement.current.value
-    props.updateNewMessText (text);
-}
+    let newText = newMessElement.current.value
+    props.dispatch({type: 'UPDATE-MESS-TEXT', newText});
+  };
+
+  let addMess = () => {
+    props.dispatch({type: 'ADD-MESS'});
+  };
+
 
   return (
     <div className={styles.container}>

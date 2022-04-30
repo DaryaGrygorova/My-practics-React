@@ -7,12 +7,11 @@ const NewPost = (props) => {
 
   let handleChange = () => {
     let newText = newPostElement.current.value;
-    props.updateNewPostText (newText);
-    // props.updateNewPostText ('');
+    props.dispatch({type: 'UPDATE-POST-TEXT', newText});
   };
 
   let addPost = () => {
-    props.addPost();
+    props.dispatch({type: 'ADD-POST'});
   }
 
  return (

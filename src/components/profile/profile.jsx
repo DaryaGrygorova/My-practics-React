@@ -10,7 +10,8 @@ const Profile = (props) => {
       <User name={props.States.Users[0].userName} about={props.States.Users[0].about}/>
       <div className={styles.wrapper}>
         <h2 className={styles.title}>My posts</h2>
-        <NewPost addPost={props.addPost} newPostText={props.States.NewPostText} updateNewPostText={props.updateNewPostText}/>
+        <NewPost newPostText={props.States.NewPostText}
+                 dispatch={props.dispatch}/>
         { MyPostsElements }
       </div>
     </main>

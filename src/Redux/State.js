@@ -1,6 +1,5 @@
-let rerenderEntireTree = () => {};
-
-let State = {
+let store = {
+  _State: {
   ProfilePage: {
     PostsData: [
       { id: 1, name: 'Jolly Docker', message: 'Hi, world!', time: '14:48', likeCounter: 15 },
@@ -35,34 +34,48 @@ let State = {
     ],
     newMessText: '',
   }
+  },
+
+  _callSubscriber() {},
+
+  getState() {
+   return this._State;
+  },
+
+  subscribe(observer) {
+    this._callSubscriber = observer;
+  },
+
+  dispatch(action) { // action- объэкт имеющий атрибут type в котором записано какое именно действие необходимо совершить
+    if (action.type === "UPDATE-POST-TEXT")  {
+      this._State.ProfilePage.NewPostText = action.newText;
+      this._callSubscriber(this._State);
+    }
+    else if (action.type === "UPDATE-MESS-TEXT") {
+      this._State.MessagePage.newMessText = action.newText;
+      this._callSubscriber(this._State);
+    }
+    else if (action.type === "ADD-POST") {
+    let newPost = { id: 5,
+                    name: 'Jolly Docker',
+                    message: (this._State.ProfilePage.NewPostText),
+                    time: '14:58',
+                    likeCounter: 0 };
+    this._State.ProfilePage.PostsData.push(newPost);
+    this._State.ProfilePage.NewPostText = '';
+    this._callSubscriber(this._State);
+  }
+    else if (action.type === "ADD-MESS") {
+    let newMess = { id: 10,
+      name: 'Frank Sinatra',
+      message: (this._State.MessagePage.newMessText),
+      time: '15:58' };
+    this._State.MessagePage.MessData.push(newMess);
+    this._callSubscriber(this._State);
+    this._State.MessagePage.newMessText = '';
+  }
+  },
 };
 
-export const updateNewPostText = (newText) => {
-  State.ProfilePage.NewPostText = newText;
-  rerenderEntireTree(State);
-};
-
-export const addPost = () => {
-  let newPost = { id: 5, name: 'Jolly Docker', message: (State.ProfilePage.NewPostText), time: '14:58', likeCounter: 0 };
-  State.ProfilePage.PostsData.push(newPost);
-  State.ProfilePage.NewPostText = '';
-  rerenderEntireTree(State);
-};
-
-export const updateNewMessText = (newMessText) => {
-  State.MessagePage.newMessText = newMessText;
-  rerenderEntireTree(State);
-};
-
-export const addMess = () => {
-  let newMess = { id: 10, name: 'Frank Sinatra', message: (State.MessagePage.newMessText), time: '15:58' };
-  State.MessagePage.MessData.push(newMess);
-  rerenderEntireTree(State);
-  State.MessagePage.newMessText = '';
-};
-
-export const subscribe = (observer) => {
-  rerenderEntireTree = observer;
-};
-
-export default State;
+export default store;
+window.store=store

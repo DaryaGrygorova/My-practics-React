@@ -12,7 +12,9 @@ const Dialogs = (props) => {
           { ContactsElements }
         </div>
         <span className={styles.line}></span>
-        <Chat MessData={props.States.MessData} addMess={props.addMess} newMessText={props.States.newMessText} updateNewMessText={props.updateNewMessText}/>
+        <Chat MessData={props.States.MessData}
+              newMessText={props.States.newMessText}
+              dispatch={props.dispatch} />
       </main>
     </div>
   );
