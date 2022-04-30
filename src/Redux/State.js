@@ -79,3 +79,27 @@ let store = {
 
 export default store;
 window.store=store
+
+export let addPostActionCreator = () => {
+  return {
+    type: 'ADD-POST'};
+};
+
+export let addNewPostActionCreator = (newText) => {
+  return {
+    type: 'UPDATE-POST-TEXT',
+    newText: (newText),
+  };
+};
+
+export let addMessActionCreator = () => {
+  return {
+    type: 'ADD-MESS'};
+};
+
+export let addNewMessActionCreator = (newText) => {
+  return {
+    type: 'UPDATE-MESS-TEXT',
+    newText: (newText),
+  };
+};
