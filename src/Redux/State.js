@@ -76,8 +76,8 @@ let store = {
       message: (this._State.MessagePage.newMessText),
       time: '15:58' };
     this._State.MessagePage.MessData.push(newMess);
-    this._callSubscriber(this._State);
     this._State.MessagePage.newMessText = '';
+    this._callSubscriber(this._State);
   }
   },
 };
