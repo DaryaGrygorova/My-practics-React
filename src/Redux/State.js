@@ -2,11 +2,6 @@ import { profileReducer } from './Reducers/profile-reducer';
 import { dialogsReducer } from './Reducers/dialogs-reducer';
 import { sidebarReducer } from './Reducers/sidebar-reducer';
 
-const ADD_POST = 'ADD-POST';
-const UPDATE_POST_TEXT = 'UPDATE-POST-TEXT';
-const ADD_MESS = 'ADD-MESS';
-const UPDATE_MESS_TEXT = 'UPDATE-MESS-TEXT';
-
 let store = {
   _State: {
     ProfilePage: {
@@ -69,16 +64,4 @@ let store = {
 export default store;
 window.store=store
 
-export let addPostActionCreator = () => ({type: ADD_POST});
 
-export let addNewPostActionCreator = (newText) => ({
-    type: UPDATE_POST_TEXT,
-    newText: (newText),
-});
-
-export const addNewMessActionCreator = (newText) => ({
-    type: UPDATE_MESS_TEXT,
-    newText: (newText),
-  });
-
-export const addMessActionCreator = () => ({type: ADD_MESS});

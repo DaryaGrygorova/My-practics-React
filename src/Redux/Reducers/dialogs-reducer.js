@@ -20,3 +20,10 @@ export const dialogsReducer = (state, action) => {
       return state;
   }
 };
+
+export const addNewMessActionCreator = (newText) => ({
+  type: UPDATE_MESS_TEXT,
+  newText: (newText),
+});
+
+export const addMessActionCreator = () => ({type: ADD_MESS});
