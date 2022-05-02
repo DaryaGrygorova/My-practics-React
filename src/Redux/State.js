@@ -1,3 +1,8 @@
+const ADD_POST = 'ADD-POST';
+const UPDATE_POST_TEXT = 'UPDATE-POST-TEXT';
+const ADD_MESS = 'ADD-MESS';
+const UPDATE_MESS_TEXT = 'UPDATE-MESS-TEXT';
+
 let store = {
   _State: {
   ProfilePage: {
@@ -47,15 +52,15 @@ let store = {
   },
 
   dispatch(action) { // action- объэкт имеющий атрибут type в котором записано какое именно действие необходимо совершить
-    if (action.type === "UPDATE-POST-TEXT")  {
+    if (action.type === UPDATE_POST_TEXT)  {
       this._State.ProfilePage.NewPostText = action.newText;
       this._callSubscriber(this._State);
     }
-    else if (action.type === "UPDATE-MESS-TEXT") {
+    else if (action.type === UPDATE_MESS_TEXT) {
       this._State.MessagePage.newMessText = action.newText;
       this._callSubscriber(this._State);
     }
-    else if (action.type === "ADD-POST") {
+    else if (action.type === ADD_POST) {
     let newPost = { id: 5,
                     name: 'Jolly Docker',
                     message: (this._State.ProfilePage.NewPostText),
@@ -65,7 +70,7 @@ let store = {
     this._State.ProfilePage.NewPostText = '';
     this._callSubscriber(this._State);
   }
-    else if (action.type === "ADD-MESS") {
+    else if (action.type === ADD_MESS) {
     let newMess = { id: 10,
       name: 'Frank Sinatra',
       message: (this._State.MessagePage.newMessText),
@@ -80,26 +85,16 @@ let store = {
 export default store;
 window.store=store
 
-export let addPostActionCreator = () => {
-  return {
-    type: 'ADD-POST'};
-};
+export let addPostActionCreator = () => ({type: ADD_POST});
 
-export let addNewPostActionCreator = (newText) => {
-  return {
-    type: 'UPDATE-POST-TEXT',
+export let addNewPostActionCreator = (newText) => ({
+    type: UPDATE_POST_TEXT,
     newText: (newText),
-  };
-};
+});
 
-export const addMessActionCreator = () => {
-  return {
-    type: 'ADD-MESS'};
-};
-
-export const addNewMessActionCreator = (newText) => {
-  return {
-    type: 'UPDATE-MESS-TEXT',
+export const addNewMessActionCreator = (newText) => ({
+    type: UPDATE_MESS_TEXT,
     newText: (newText),
-  };
-};
+  });
+
+export const addMessActionCreator = () => ({type: ADD_MESS});
