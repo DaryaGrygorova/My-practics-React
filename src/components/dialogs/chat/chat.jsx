@@ -1,6 +1,7 @@
 import styles from "./chat.module.css"
 import Message from '../message/message';
 import React from 'react';
+import { addMessActionCreator, addNewMessActionCreator } from '../../../Redux/State';
 
 const Chat = (props) => {
   let MessElements = props.MessData.map ( Mess => <Message id={Mess.id} message={Mess.message} name={Mess.name} time={Mess.time}/> );
@@ -9,11 +10,11 @@ const Chat = (props) => {
 
   let onChangeMessText = () => {
     let newText = newMessElement.current.value
-    props.dispatch({type: 'UPDATE-MESS-TEXT', newText});
+    props.dispatch(addNewMessActionCreator(newText));
   };
 
   let addMess = () => {
-    props.dispatch({type: 'ADD-MESS'});
+    props.dispatch(addMessActionCreator());
   };
 
 
