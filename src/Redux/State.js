@@ -92,12 +92,12 @@ export let addNewPostActionCreator = (newText) => {
   };
 };
 
-export let addMessActionCreator = () => {
+export const addMessActionCreator = () => {
   return {
     type: 'ADD-MESS'};
 };
 
-export let addNewMessActionCreator = (newText) => {
+export const addNewMessActionCreator = (newText) => {
   return {
     type: 'UPDATE-MESS-TEXT',
     newText: (newText),
