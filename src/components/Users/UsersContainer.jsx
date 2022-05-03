@@ -10,8 +10,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    follow: (userId) => dispatch(followAC(userId)),
-    unfollow: (userId) => dispatch(unfollowAC(userId)),
+    follows: (userId) => dispatch(followAC(userId)),
+    unfollows: (userId) => dispatch(unfollowAC(userId)),
     setUsers: (users) => dispatch(setUsersAC(users))
   };
 };

@@ -8,12 +8,14 @@ import DialogsContainer from './components/dialogs/dialogsContainer';
 import UsersContainer from './components/Users/UsersContainer';
 
 const App = (props) => {
+  debugger;
   return (
     <BrowserRouter>
     <div className="App-wrapper">
       <Header />
       <div className="main-container">
         <Sidebar />
+        <div className="content">
         <Routes>
           <Route path='/'
                  element={<StartPage />} />
@@ -31,6 +33,7 @@ const App = (props) => {
               </main>}
           />
         </Routes>
+        </div>
       </div>
     </div>
     </BrowserRouter>

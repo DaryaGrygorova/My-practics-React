@@ -1,6 +1,14 @@
 import styles from '../Users/UserCard.module.css';
 
 let UserCard = (props) => {
+
+  let followClick = () => {
+    props.follows(props.id)
+  }
+  let unfollowClick = () => {
+    props.unfollows(props.id)
+  }
+
     return (
       <div className={styles.wrapper}>
           <div className={styles.description}>
@@ -16,8 +24,8 @@ let UserCard = (props) => {
         </div>
         <div className={styles.buttonSet}>
           {props.followed
-            ? <button className="button" onClick={props.unfollow(props.id)}>Unfollow</button>
-            : <button className="button" onClick={props.follow(props.id)}>Follow</button> }
+            ? <button className="button" onClick={unfollowClick}>Unfollow</button>
+            : <button className="button" onClick={followClick}>Follow</button> }
         </div>
       </div>
     );

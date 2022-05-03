@@ -2,7 +2,7 @@ import UserCard from './UserCard';
 import styles from './UserCard.module.css';
 
 let Users = (props) => {
-  let UsersElements = props.Users.map ( Card => <UserCard key={Card.id} id={Card.id} photoURL={Card.photoURL} followed={Card.followed} userName={Card.userName} about={Card.about} unfollow={props.unfollow} follow={props.follow}/> );
+  let UsersElements = props.Users.map ( Card => <UserCard key={Card.id} id={Card.id} photoURL={Card.photoURL} followed={Card.followed} userName={Card.userName} about={Card.about} follows={props.follows} unfollows={props.unfollows}/> );
   return (
     <div className={styles.container}>
         { UsersElements }
