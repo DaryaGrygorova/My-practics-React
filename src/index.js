@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
 import App from './App';
-import store from './Redux/Store';
+import store from './Redux/redux-store';
 
 
 
@@ -24,7 +24,10 @@ let rerenderEntireTree = (State) => {
   );
 };
 
-store.subscribe (rerenderEntireTree)
+store.subscribe (() => {
+  let State = store.getState();
+    rerenderEntireTree(State);
+})
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
