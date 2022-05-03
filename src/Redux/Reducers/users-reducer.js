@@ -6,14 +6,14 @@ const SET_USERS = "SET_USERS";
 
 let initialState = {
   Users: [
-    { id: 1, followed: true, userName: 'Jolly Docker', about: 'Pretty lady', photoURL: 'https://w7.pngwing.com/pngs/627/693/png-transparent-computer-icons-user-user-icon-thumbnail.png' },
-    { id: 2, followed: false, userName: 'Sara Connor', about: 'Astronaut', photoURL: 'https://w7.pngwing.com/pngs/627/693/png-transparent-computer-icons-user-user-icon-thumbnail.png' },
-    { id: 3, followed: false, userName: 'Lisa Fahrenheit', about: 'Candy - it\'s my love', photoURL: 'https://w7.pngwing.com/pngs/627/693/png-transparent-computer-icons-user-user-icon-thumbnail.png' },
-    { id: 4, followed: true, userName: 'Rose Friedman', about: 'Girl with funny nose', photoURL: 'https://w7.pngwing.com/pngs/627/693/png-transparent-computer-icons-user-user-icon-thumbnail.png' },
-    { id: 5, followed: false, userName: 'Frank Sinatra', about: 'Music - it\'s all...', photoURL: 'https://w7.pngwing.com/pngs/627/693/png-transparent-computer-icons-user-user-icon-thumbnail.png' },
-    { id: 6, followed: false, userName: 'John Silver', about: 'Freelancer', photoURL: 'https://w7.pngwing.com/pngs/627/693/png-transparent-computer-icons-user-user-icon-thumbnail.png' },
-    { id: 7, followed: true, userName: 'Tomas Fisher', about: 'ChokoBanny', photoURL: 'https://w7.pngwing.com/pngs/627/693/png-transparent-computer-icons-user-user-icon-thumbnail.png' },
-    { id: 8, followed: true, userName: 'Lili Walker', about: 'My little world', photoURL: 'https://w7.pngwing.com/pngs/627/693/png-transparent-computer-icons-user-user-icon-thumbnail.png' }
+    { id: 1, followed: true, userName: 'Jolly Docker', about: 'Pretty lady', photoURL: 'D:\\React-pract\\first-app\\My-practics-React\\src\\components\\images\\pngwing.com (1).png' },
+    { id: 2, followed: false, userName: 'Sara Connor', about: 'Astronaut', photoURL: 'D:\\React-pract\\first-app\\My-practics-React\\src\\components\\images\\pngwing.com (1).png' },
+    { id: 3, followed: false, userName: 'Lisa Fahrenheit', about: 'Candy - it\'s my love', photoURL: 'D:\\React-pract\\first-app\\My-practics-React\\src\\components\\images\\pngwing.com (1).png' },
+    { id: 4, followed: true, userName: 'Rose Friedman', about: 'Girl with funny nose', photoURL: 'D:\\React-pract\\first-app\\My-practics-React\\src\\components\\images\\pngwing.com (1).png' },
+    { id: 5, followed: false, userName: 'Frank Sinatra', about: 'Music - it\'s all...', photoURL: 'D:\\React-pract\\first-app\\My-practics-React\\src\\components\\images\\pngwing.com (1).png' },
+    { id: 6, followed: false, userName: 'John Silver', about: 'Freelancer', photoURL: 'D:\\React-pract\\first-app\\My-practics-React\\src\\components\\images\\pngwing.com (1).png' },
+    { id: 7, followed: true, userName: 'Tomas Fisher', about: 'ChokoBanny', photoURL: 'D:\\React-pract\\first-app\\My-practics-React\\src\\components\\images\\pngwing.com (1).png' },
+    { id: 8, followed: true, userName: 'Lili Walker', about: 'My little world', photoURL: 'D:\\React-pract\\first-app\\My-practics-React\\src\\components\\images\\pngwing.com (1).png' }
   ],
 };
 export const UserReducer = (state = initialState, action) => {
