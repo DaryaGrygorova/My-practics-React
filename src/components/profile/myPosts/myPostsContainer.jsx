@@ -23,14 +23,14 @@ import { connect } from 'react-redux';
 //   );
 // };
 
-let mapStateToProps = (state) => {
+const mapStateToProps = (state) => {
   return {
     PostsData: state.ProfilePage.PostsData,
     NewPostText: state.ProfilePage.NewPostText
   };
 };
 
-  let mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch) => {
     return {
       handleChange: (newText) => dispatch(addNewPostActionCreator(newText)),
       onClick: () => dispatch(addPostActionCreator())

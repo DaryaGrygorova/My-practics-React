@@ -24,14 +24,14 @@ import { connect } from 'react-redux';
 // );
 // };
 
-let mapStateToProps = (state) => {
+const mapStateToProps = (state) => {
   return {
     MessData: state.MessagePage.MessData,
     newMessText: state.MessagePage.newMessText,
   };
 };
 
-let mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     handleChange: (newText) => dispatch(addNewMessActionCreator(newText)),
     onClick: () => dispatch(addMessActionCreator())

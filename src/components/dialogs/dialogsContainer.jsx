@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import Dialogs from './dialogs';
 
-let mapStateToProps = (state) => {
+const mapStateToProps = (state) => {
     return {
       ContactsData: state.MessagePage.ContactsData,
     };
