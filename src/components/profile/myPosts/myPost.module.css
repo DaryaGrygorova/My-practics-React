@@ -63,3 +63,10 @@
     font-style: italic;
     color: rgba(40, 44, 52, .8);
 }
+
+.title {
+    margin-bottom: 20px;
+    font-size: 36px;
+    font-weight: 900;
+    color: black;
+}
