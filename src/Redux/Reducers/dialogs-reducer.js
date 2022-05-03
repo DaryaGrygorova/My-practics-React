@@ -27,23 +27,20 @@ let initialState = {
 
 export const dialogsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case UPDATE_MESS_TEXT: {
-      let stateCopy = {
+    case UPDATE_MESS_TEXT:
+      return {
         ...state,
-        newMessText: action.newText};
-      return stateCopy;
-    }
+        newMessText: action.newText
+      };
 
-    case ADD_MESS: {
+    case ADD_MESS:
       let newMess = state.newMessText;
 
-      let stateCopy = {
+      return {
         ...state,
         newMessText: '',
         MessData: [...state.MessData, { id: 10, name: 'Frank Sinatra', message: newMess, time: '15:58' }]
       };
-      return stateCopy;
-    }
 
     default: return state;
   }
