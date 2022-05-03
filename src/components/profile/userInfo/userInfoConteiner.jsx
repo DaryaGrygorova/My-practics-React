@@ -3,8 +3,8 @@ import UserInfo from './userInfo';
 
 const mapStateToProps = (state) => {
   return {
-    UserName: state.ProfilePage.Users.userName,
-    UserAbout: state.ProfilePage.Users.about,
+    UserName: state.ProfilePage.User.userName,
+    UserAbout: state.ProfilePage.User.about,
   };
 };
 

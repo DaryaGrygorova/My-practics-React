@@ -26,6 +26,11 @@ const Sidebar = () => {
                 Music
               </NavLink>
             </li>
+          <li className={styles.item}>
+          <NavLink className={({isActive}) => isActive ? 'currentPage' : ''} to="/users" >
+            Users
+          </NavLink>
+        </li>
           </ul>
         </nav>
         <div className={`${ styles.item } ${styles.settings}`}>
