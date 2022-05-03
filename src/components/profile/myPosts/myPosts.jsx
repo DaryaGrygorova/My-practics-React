@@ -2,8 +2,8 @@ import Post from './post/post';
 import styles from '../myPosts/myPost.module.css';
 
 const MyPosts = (props) => {
-debugger;
-let handleChange = (event) => {
+
+  let handleChange = (event) => {
   let newText = event.target.value;
   props.handleChange(newText);
 };

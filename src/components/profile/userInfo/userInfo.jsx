@@ -20,8 +20,8 @@ const UserInfo = (props) => {
           height="250"
         />
         <div className={styles.description}>
-          <h1 className={styles.name}>{props.name}</h1>
-          <p className={styles.about}>{props.about}</p>
+          <h1 className={styles.name}>{props.UserName}</h1>
+          <p className={styles.about}>{props.UserAbout}</p>
         </div>
       </div>
 </div>

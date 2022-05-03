@@ -2,9 +2,9 @@ import './App.css';
 import Header from './components/header/header';
 import Sidebar from './components/sidebar/sidebar';
 import Profile from './components/profile/profile';
-import Dialogs from './components/dialogs/dialogs';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import StartPage from './components/startPage/startPage';
+import DialogsContainer from './components/dialogs/dialogsContainer';
 
 const App = (props) => {
   return (
@@ -17,9 +17,9 @@ const App = (props) => {
           <Route path='/'
                  element={<StartPage />} />
           <Route path='/profile/*'
-                 element={<Profile store={props.store} />} />
+                 element={<Profile />} />
           <Route path='/dialogs/*'
-                 element={<Dialogs store={props.store} />} />
+                 element={<DialogsContainer />} />
           <Route
             path="*"
             element={
