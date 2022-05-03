@@ -16,7 +16,7 @@ export const profileReducer = (state = initialState, action) => {
     case UPDATE_POST_TEXT: {
       let stateCopy = {...state};
       stateCopy.NewPostText = action.newText;
-      return (stateCopy);
+      return (state);
     }
 
     case ADD_POST: {

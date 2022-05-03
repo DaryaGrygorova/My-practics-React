@@ -3,7 +3,7 @@ import Message from '../message/message';
 
 const Chat = (props) => {
 
-  let MessElements = props.MessData.map ( Mess => <Message id={Mess.id} message={Mess.message} name={Mess.name} time={Mess.time}/> );
+  let MessElements = props.MessData.map ( Mess => <Message key={Mess.id} id={Mess.id} message={Mess.message} name={Mess.name} time={Mess.time}/> );
 
   let handleChange = (event) => {
     let newText = event.target.value;

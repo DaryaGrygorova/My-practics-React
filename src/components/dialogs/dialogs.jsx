@@ -3,7 +3,7 @@ import styles from "./dialogs.module.css"
 import ChatContainer from './chat/chatContainer';
 
 const Dialogs = (props) => {
-  let ContactsElements = props.ContactsData.map ( OneContact => <Contact id={OneContact.id} name={OneContact.name} /> );
+  let ContactsElements = props.ContactsData.map ( OneContact => <Contact key={OneContact.id} id={OneContact.id} name={OneContact.name} /> );
   return (
     <div className="content">
       <main className={styles.container}>

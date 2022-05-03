@@ -12,7 +12,7 @@ let onClick = () => {
   props.onClick();
 };
 
-let Posts = props.PostsData.map ( PostItem => <Post id={PostItem.id} name={PostItem.name} message={PostItem.message} likeCounter={PostItem.likeCounter} time={PostItem.time}/> );
+let Posts = props.PostsData.map ( PostItem => <Post key={PostItem.id} id={PostItem.id} name={PostItem.name} message={PostItem.message} likeCounter={PostItem.likeCounter} time={PostItem.time}/> );
 
 return (
     <div>
