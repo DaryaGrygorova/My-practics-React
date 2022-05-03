@@ -70,9 +70,9 @@ ul {
   margin: 75px auto 0;
   padding: 0 15px;
   width: 1200px;
+  height: 91vh;
+  overflow-y: scroll;
 }
-
-
 
 /* Логотип */
 .logo {

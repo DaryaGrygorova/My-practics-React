@@ -3,20 +3,12 @@
     flex-direction: column;
     grid-area: sidebar;
     position: sticky;
-    top: 75px;
+    top: 0;
     height: 91vh;
     padding: 15px;
     background-color: rgba(138, 43, 226, .5);
     margin-right: 5px;
 }
-
-/* .nav {
-  margin-bottom: ;
-} */
-
-/* .nav__item  {
-  margin-bottom: 30px;
-} */
 
 .item {
     padding: 10px;

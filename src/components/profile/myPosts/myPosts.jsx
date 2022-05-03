@@ -1,16 +1,15 @@
 import Post from './post/post';
 import styles from '../myPosts/myPost.module.css';
-import { addNewPostActionCreator, addPostActionCreator } from '../../../Redux/Reducers/profile-reducer';
 
 const MyPosts = (props) => {
 
 let handleChange = (event) => {
   let newText = event.target.value;
-  props.dispatch(addNewPostActionCreator(newText));
+  props.handleChange(newText);
 };
 
-let addPost = () => {
-  props.dispatch(addPostActionCreator());
+let onClick = () => {
+  props.onClick();
 }
 
 let Posts = props.PostsData.map ( PostItem => <Post id={PostItem.id} name={PostItem.name} message={PostItem.message} likeCounter={PostItem.likeCounter} time={PostItem.time}/> );
@@ -25,20 +24,15 @@ return (
           rows="3"
           placeholder="Enter the text"
           required
-          value = {props.newPostText}
+          value={props.NewPostText}
           onChange={handleChange}
         />
         <button className={`${styles.button} button`}
-          // type="submit"
-                onClick={addPost}>
+          type="submit"
+                onClick={onClick}>
           Send
         </button>
       </form>
-
-
-
-      {/*<NewPost newPostText={props.NewPostText}*/}
-      {/*         dispatch={props.dispatch}/>*/}
       {Posts}
     </div>
   );
