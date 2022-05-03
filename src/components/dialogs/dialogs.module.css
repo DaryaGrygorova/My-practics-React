@@ -25,3 +25,6 @@
     background-color: #e0e5f3;
 }
 
+.wrapper {
+    flex-grow: 1;
+}

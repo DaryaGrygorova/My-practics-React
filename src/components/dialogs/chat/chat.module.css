@@ -23,7 +23,6 @@
     padding: 0 15px;
     overflow-y: auto;
     width: 100%;
-    flex-grow: 1;
 }
 
 .thumb {

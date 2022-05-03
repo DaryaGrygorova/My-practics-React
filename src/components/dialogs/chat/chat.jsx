@@ -1,20 +1,18 @@
 import styles from "./chat.module.css"
 import Message from '../message/message';
-import { addMessActionCreator, addNewMessActionCreator } from '../../../Redux/Reducers/dialogs-reducer';
 
 const Chat = (props) => {
+
   let MessElements = props.MessData.map ( Mess => <Message id={Mess.id} message={Mess.message} name={Mess.name} time={Mess.time}/> );
 
-
-  let onChangeMessText = (event) => {
+  let handelChange = (event) => {
     let newText = event.target.value;
-    props.dispatch(addNewMessActionCreator(newText));
+    props.handelChange(newText);
   };
 
-  let addMess = () => {
-    props.dispatch(addMessActionCreator());
+  let onClick = () => {
+    props.onClick();
   };
-
 
   return (
     <div className={styles.container}>
@@ -39,8 +37,8 @@ const Chat = (props) => {
               placeholder="Введите текст..."
               required
               value={props.newMessText}
-              onChange={onChangeMessText}/>
-        <button className="button" type="submit" onClick={addMess}>
+              onChange={handelChange}/>
+        <button className="button" type="submit" onClick={onClick}>
           Send
         </button>
       </form>
