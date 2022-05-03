@@ -2,7 +2,7 @@ import Post from './post/post';
 import styles from '../myPosts/myPost.module.css';
 
 const MyPosts = (props) => {
-
+debugger;
 let handleChange = (event) => {
   let newText = event.target.value;
   props.handleChange(newText);
@@ -10,7 +10,7 @@ let handleChange = (event) => {
 
 let onClick = () => {
   props.onClick();
-}
+};
 
 let Posts = props.PostsData.map ( PostItem => <Post id={PostItem.id} name={PostItem.name} message={PostItem.message} likeCounter={PostItem.likeCounter} time={PostItem.time}/> );
 

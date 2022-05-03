@@ -3,16 +3,21 @@ import MyPosts from './myPosts';
 
 const MyPostsContainer = (props) => {
 
+  let state= props.store.getState().ProfilePage
+
 let onChange = (newText) => {
-  props.dispatch(addNewPostActionCreator(newText));
+  props.store.dispatch(addNewPostActionCreator(newText));
 };
 
 let addPost = () => {
-  props.dispatch(addPostActionCreator());
+  props.store.dispatch(addPostActionCreator());
 }
 return (
     <div>
-      <MyPosts onClick={addPost} handleChange={onChange} PostsData={props.PostsData} NewPostText={props.NewPostText}/>
+      <MyPosts onClick={addPost}
+               handleChange={onChange}
+               PostsData={state.PostsData}
+               NewPostText={state.NewPostText}/>
     </div>
   );
 };

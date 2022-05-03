@@ -3,11 +3,14 @@ import styles from './profile.module.css';
 import MyPostsContainer from './myPosts/myPostsContainer';
 
 const Profile = (props) => {
+  let state= props.store.getState().ProfilePage
+debugger;
   return (
     <main className="content">
-      <User name={props.States.Users[0].userName} about={props.States.Users[0].about}/>
+      <User name={state.Users.userName}
+            about={state.Users.about}/>
       <div className={styles.wrapper}>
-      <MyPostsContainer dispatch={props.dispatch} PostsData={props.States.PostsData} NewPostText={props.States.NewPostText} />
+      <MyPostsContainer store={props.store} />
       </div>
     </main>
   );

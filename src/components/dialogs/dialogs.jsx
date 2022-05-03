@@ -3,7 +3,9 @@ import styles from "./dialogs.module.css"
 import ChatContainer from './chat/chatContainer';
 
 const Dialogs = (props) => {
-  let ContactsElements = props.States.ContactsData.map ( OneContact => <Contact id={OneContact.id} name={OneContact.name} /> );
+  let state= props.store.getState().MessagePage
+
+  let ContactsElements = state.ContactsData.map ( OneContact => <Contact id={OneContact.id} name={OneContact.name} /> );
   return (
     <div className="content">
       <main className={styles.container}>
@@ -13,9 +15,7 @@ const Dialogs = (props) => {
         </div>
         <span className={styles.line}></span>
         <div className={styles.wrapper}>
-        <ChatContainer MessData={props.States.MessData}
-              newMessText={props.States.newMessText}
-              dispatch={props.dispatch} />
+        <ChatContainer store={props.store} />
         </div>
       </main>
     </div>

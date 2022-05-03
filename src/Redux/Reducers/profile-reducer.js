@@ -8,8 +8,7 @@ let initialState = {
     { id: 3, name: 'Jolly Docker', message: 'How are you?', time: '14:58', likeCounter: 7 },
   ],
   NewPostText: '',
-  Users: [
-    { id: 1, userName: 'Jolly Docker', about: 'Pretty lady' }],
+  Users: { id: 1, userName: 'Jolly Docker', about: 'Pretty lady' },
 };
 
 export const profileReducer = (state = initialState, action) => {

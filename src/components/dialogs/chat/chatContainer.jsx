@@ -3,17 +3,22 @@ import Chat from './chat';
 
 const ChatContainer = (props) => {
 
+  let state= props.store.getState().MessagePage
+
   let onChangeMessText = (newText) => {
-    props.dispatch(addNewMessActionCreator(newText));
+    props.store.dispatch(addNewMessActionCreator(newText));
   };
 
   let addMess = () => {
-    props.dispatch(addMessActionCreator());
+    props.store.dispatch(addMessActionCreator());
   };
 
   return (
    <div>
-     <Chat handelChange={onChangeMessText} onClick={addMess} MessData={props.MessData} newMessText={props.newMessText}/>
+     <Chat handelChange={onChangeMessText}
+           onClick={addMess}
+           MessData={state.MessData}
+           newMessText={state.newMessText}/>
    </div>
 );
 };
