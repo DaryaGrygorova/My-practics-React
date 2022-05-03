@@ -5,9 +5,9 @@ const Chat = (props) => {
 
   let MessElements = props.MessData.map ( Mess => <Message id={Mess.id} message={Mess.message} name={Mess.name} time={Mess.time}/> );
 
-  let handelChange = (event) => {
+  let handleChange = (event) => {
     let newText = event.target.value;
-    props.handelChange(newText);
+    props.handleChange(newText);
   };
 
   let onClick = () => {
@@ -37,7 +37,7 @@ const Chat = (props) => {
               placeholder="Введите текст..."
               required
               value={props.newMessText}
-              onChange={handelChange}/>
+              onChange={handleChange}/>
         <button className="button" type="submit" onClick={onClick}>
           Send
         </button>
