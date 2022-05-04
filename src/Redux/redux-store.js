@@ -13,6 +13,6 @@ let reducerStack = combineReducers({
 );
 
 let store = createStore(reducerStack);
+debugger;
 window.store=store
-
 export default store;
