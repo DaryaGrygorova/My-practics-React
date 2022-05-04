@@ -3,12 +3,18 @@ import axios from 'axios';
 import userPhoto from '../images/customer_person_people_man.png'
 
 let Users = (props) => {
-  if (props.Users.length === 0) {
-    axios.get("https://social-network.samuraijs.com/api/1.0/users")
-         .then (response => { props.setUsers(response.data.items)} )};
 
+  let gettingUsers = () => {
+    if (props.Users.length === 0) {
+      axios.get("https://social-network.samuraijs.com/api/1.0/users")
+        .then(response => {
+          props.setUsers(response.data.items)
+        })
+    };
+  }
   return (
     <div className={styles.container}>
+      <button className="button" onClick={gettingUsers}>Get Users</button>
       { props.Users.map ( Card => <div key={Card.id}>
         <div className={styles.wrapper} >
           <div className={styles.description}>
