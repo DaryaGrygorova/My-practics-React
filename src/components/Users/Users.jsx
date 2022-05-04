@@ -1,7 +1,6 @@
-import styles from './User.module.css';
+import styles from './Users.module.css';
 
 let Users = (props) => {
-debugger;
   if (props.Users.length === 0) {
    props.setUsers([
       { id: 1, followed: true, userName: 'Jolly Docker', about: 'Pretty lady', photoURL: 'https://cdn.icon-icons.com/icons2/11/PNG/256/customer_person_people_woman_you_1627.png' },
@@ -12,7 +11,7 @@ debugger;
       { id: 6, followed: false, userName: 'John Silver', about: 'Freelancer', photoURL: 'https://ru.seaicons.com/wp-content/uploads/2016/04/user-icon.png ' },
       { id: 7, followed: true, userName: 'Tomas Fisher', about: 'ChokoBanny', photoURL: 'https://ru.seaicons.com/wp-content/uploads/2016/04/user-icon.png ' },
       { id: 8, followed: true, userName: 'Lili Walker', about: 'My little world', photoURL: 'https://cdn.icon-icons.com/icons2/11/PNG/256/customer_person_people_woman_you_1627.png ' }
-    ])};
+    ])}
 
   return (
     <div className={styles.container}>
@@ -30,7 +29,7 @@ debugger;
             <p className={styles.text}>{Card.about}</p>
           </div>
           <div className={styles.buttonSet}>
-            {props.followed
+            {Card.followed
               ? <button className="button" onClick={() => { props.unfollows(Card.id) } }>Unfollow</button>
               : <button className="button" onClick={() => { props.follows(Card.id) } }>Follow</button> }
           </div>
