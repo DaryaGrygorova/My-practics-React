@@ -1,13 +1,11 @@
 import styles from './newPost.module.css';
 import React from 'react';
-import { addNewPostActionCreator, addPostActionCreator } from '../../../../Redux/State';
+import { addNewPostActionCreator, addPostActionCreator } from '../../../../Redux/Reducers/profile-reducer';
 
 const NewPost = (props) => {
 
-  let newPostElement = React.createRef();
-
-  let handleChange = () => {
-    let newText = newPostElement.current.value;
+  let handleChange = (event) => {
+    let newText = event.target.value;
     props.dispatch(addNewPostActionCreator(newText));
   };
 
@@ -19,7 +17,6 @@ const NewPost = (props) => {
     <div>
       <form className={styles.thumb}>
         <textarea
-          ref={newPostElement}
           className={styles.input}
           name="new_post"
           rows="3"

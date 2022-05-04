@@ -1,15 +1,15 @@
 import styles from "./chat.module.css"
 import Message from '../message/message';
 import React from 'react';
-import { addMessActionCreator, addNewMessActionCreator } from '../../../Redux/State';
+import { addMessActionCreator, addNewMessActionCreator } from '../../../Redux/Reducers/dialogs-reducer';
 
 const Chat = (props) => {
   let MessElements = props.MessData.map ( Mess => <Message id={Mess.id} message={Mess.message} name={Mess.name} time={Mess.time}/> );
 
-  let newMessElement = React.createRef();
+  // let newMessElement = React.createRef();
 
-  let onChangeMessText = () => {
-    let newText = newMessElement.current.value
+  let onChangeMessText = (event) => {
+    let newText = event.target.value;
     props.dispatch(addNewMessActionCreator(newText));
   };
 
@@ -35,7 +35,6 @@ const Chat = (props) => {
   </div>
       <form className={styles.thumb}>
             <textarea
-              ref={newMessElement}
               className={styles.input}
               name="new_message"
               rows="1"
