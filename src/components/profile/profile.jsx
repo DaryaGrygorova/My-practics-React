@@ -1,13 +1,14 @@
 import styles from './profile.module.css';
-import MyPostsContainer from './myPosts/myPostsContainer';
-import UserInfoContainer from './userInfo/userInfoConteiner';
+import UserInfo from './userInfo/userInfo';
+import MyPosts from './myPosts/myPosts';
 
 const Profile = (props) => {
   return (
     <main className="content">
-      <UserInfoContainer />
+      <UserInfo Profile={props.Profile}/>
       <div className={styles.wrapper}>
-      <MyPostsContainer />
+      <MyPosts PostsData={props.PostsData} NewPostText={props.NewPostText}
+               onClick={props.addPost} handleChange={props.addNewPost}/>
       </div>
     </main>
   );

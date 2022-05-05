@@ -1,5 +1,6 @@
 const ADD_POST = 'ADD-POST';
 const UPDATE_POST_TEXT = 'UPDATE-POST-TEXT';
+const SET_USER_PROFILE = "SET_USER_PROFILE";
 
 let initialState = {
   PostsData: [
@@ -8,7 +9,10 @@ let initialState = {
     { id: 3, name: 'Jolly Docker', message: 'How are you?', time: '14:58', likeCounter: 7 },
   ],
   NewPostText: '',
-  User: { id: 1, userName: 'Jolly Docker', about: 'Pretty lady' },
+  Profile: null,
+  // Profile: [{id: 13524, aboutMe: 'Слава Україні!',}],
+  isFetching: true,
+
 };
 
 export const profileReducer = (state = initialState, action) => {
@@ -25,13 +29,17 @@ export const profileReducer = (state = initialState, action) => {
         PostsData: [...state.PostsData, {id: 5, name: 'Jolly Docker', message: (newPost), time: '14:58', likeCounter: 0 }],
       };
 
+    case SET_USER_PROFILE: {
+      let stateCopy = {...state,
+        Profile: action.profile,
+        }
+        return stateCopy;
+    }
+
     default: return state;
   }
 };
 
-export let addPostActionCreator = () => ({type: ADD_POST});
-
-export let addNewPostActionCreator = (newText) => ({
-  type: UPDATE_POST_TEXT,
-  newText: (newText),
-});
+export const setUserProfile= (profile) =>({type: SET_USER_PROFILE, profile});
+export let addPost = () => ({type: ADD_POST});
+export let addNewPost = (newText) => ({type: UPDATE_POST_TEXT, newText});

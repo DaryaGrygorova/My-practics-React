@@ -3,10 +3,10 @@ import React  from 'react';
 import axios from 'axios';
 import Users from './Users';
 import {
-  follow,
+  follows,
   setCurrentPage,
   setUsers, setUsersCount, toggleIsFetching,
-  unfollow,
+  unfollows,
 } from '../../Redux/Reducers/users-reducer';
 import Preloader from '../../common/preloader/isFetching_preloader';
 
@@ -59,7 +59,7 @@ const mapStateToProps = (state) => {
 };
 
 const UsersContainer = connect (mapStateToProps,
-                {follow, unfollow, setUsers, setCurrentPage, setUsersCount, toggleIsFetching })
+                {follows, unfollows, setUsers, setCurrentPage, setUsersCount, toggleIsFetching })
                                 (UsersAPI);
 
 export default UsersContainer;

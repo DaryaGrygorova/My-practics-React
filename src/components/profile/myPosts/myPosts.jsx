@@ -3,14 +3,13 @@ import styles from '../myPosts/myPost.module.css';
 
 const MyPosts = (props) => {
 
-  let handleChange = (event) => {
-  let newText = event.target.value;
-  props.handleChange(newText);
-};
-
-let onClick = () => {
-  props.onClick();
-};
+//   let handleChange = (event) => {
+//   let newText = event.target.value;
+//   props.handleChange(event.target.value);
+// };
+//
+// let onClick = ;
+// };
 
 let Posts = props.PostsData.map ( PostItem => <Post key={PostItem.id} id={PostItem.id} name={PostItem.name} message={PostItem.message} likeCounter={PostItem.likeCounter} time={PostItem.time}/> );
 
@@ -25,11 +24,11 @@ return (
           placeholder="Enter the text"
           required
           value={props.NewPostText}
-          onChange={handleChange}
+          onChange={ (event)=> {props.handleChange(event.target.value)}}
         />
         <button className={`${styles.button} button`}
           type="submit"
-                onClick={onClick}>
+                onClick={() => {props.onClick()}}>
           Send
         </button>
       </form>

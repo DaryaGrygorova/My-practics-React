@@ -1,6 +1,12 @@
 import styles from './userInfo.module.css';
+import userPhoto from '../../images/customer_person_people_man.png';
+import Preloader from '../../../common/preloader/isFetching_preloader';
 
 const UserInfo = (props) => {
+  if (!props.Profile) {
+    return <Preloader />
+  };
+
   return (
     <div>
     <div className={styles.wrapper}>
@@ -12,16 +18,16 @@ const UserInfo = (props) => {
       />
     </div>
     <div className={styles.thumb}>
-        <img
-          src="https://us.123rf.com/450wm/naschy/naschy1601/naschy160100001/50911392-vector-illustration-of-old-woman-in-purple-dress-with-walking-stick.jpg?ver=6"
-          className={styles.photo}
-          alt="UserInfo"
-          width="260"
-          height="250"
-        />
+      <img
+        className={styles.photo}
+        src={props.Profile.photos.large != null ? props.Profile.photos.large : userPhoto}
+        alt="User"
+        width="260"
+        height="250"
+      />
         <div className={styles.description}>
-          <h1 className={styles.name}>{props.UserName}</h1>
-          <p className={styles.about}>{props.UserAbout}</p>
+          <h1 className={styles.name}>{props.Profile.fullName}</h1>
+          <p className={styles.about}>{props.Profile.aboutMe}</p>
         </div>
       </div>
 </div>

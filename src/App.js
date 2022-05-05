@@ -1,11 +1,11 @@
 import './App.css';
 import Header from './components/header/header';
 import Sidebar from './components/sidebar/sidebar';
-import Profile from './components/profile/profile';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import StartPage from './components/startPage/startPage';
 import DialogsContainer from './components/dialogs/dialogsContainer';
 import UsersContainer from './components/Users/UsersContainer';
+import ProfileContainer from './components/profile/profileContainer';
 
 const App = (props) => {
   return (
@@ -19,7 +19,7 @@ const App = (props) => {
           <Route path='/'
                  element={<StartPage />} />
           <Route path='/profile/*'
-                 element={<Profile />} />
+                 element={<ProfileContainer />} />
           <Route path='/dialogs/*'
                  element={<DialogsContainer />} />
           <Route path='/users/*'
