@@ -33,7 +33,8 @@ function Users (props) {
        <ul className={styles.pageNumbList}>
          { pages.map ( p => {
            return (
-             p <= 7 && <li className={styles.pageNumb}><span onClick={() => {props.onPageChanged(p)}} className={props.CurrentPage === p ? styles.selected : ''}>{p}</span></li>
+             p <= 20 &&
+             <li className={styles.pageNumb}><span onClick={() => {props.onPageChanged(p)}} className={props.CurrentPage === p ? styles.selected : ''}>{p}</span></li>
            ) })}
           <li className={styles.pageNumb}><span>...</span></li>
        </ul>
