@@ -1,29 +1,26 @@
 import React from 'react';
 import axios from 'axios';
 import Profile from './profile';
-import { addNewPost, addPost, setUserProfile } from '../../Redux/Reducers/profile-reducer';
+import { addNewPost, addPost, setUserID, setUserProfile } from '../../Redux/Reducers/profile-reducer';
 import { connect } from 'react-redux';
 
 class ProfileContainer extends React.Component {
 
   componentDidMount() {
-    axios.get(`https://social-network.samuraijs.com/api/1.0/profile/13524`)
+    if (!this.props.UserID) {this.props.UserID = 13254}
+      axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${this.props.UserID}`)
          .then(response => {
         this.props.setUserProfile(response.data);
-      })
+        })
   }
 
-  // onPageChanged = (pageNumb) => {
-  //   this.props.toggleIsFetching(true);
-  //   this.props.setCurrentPage(pageNumb);
-  //   axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumb}&count=${this.props.PageSize}`)
-  //     .then(response => {
-  //       this.props.toggleIsFetching(false);
-  //       this.props.setUsers(response.data.items);
-  //       this.props.setUsersCount(response.data.totalCount)
-  //
-  //     })
-  // }
+  onPageChanged = (UserID) => {
+    axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${this.props.UserID}`)
+      .then(response => {
+        this.props.setUsers(response.data.items);
+        this.props.setUsersCount(response.data.totalCount)
+      })
+  }
 
   render() {
     return <Profile {...this.props}/>;
@@ -32,10 +29,12 @@ class ProfileContainer extends React.Component {
 
 let mapStateToProps = (state) => {
   return {
-  Profile: state.ProfilePage.Profile,
-  PostsData: state.ProfilePage.PostsData,
-  NewPostText: state.ProfilePage.NewPostText,
+    CurrentUserID: state.ProfilePage.CurrentUserID,
+    Profile: state.ProfilePage.Profile,
+    PostsData: state.ProfilePage.PostsData,
+    NewPostText: state.ProfilePage.NewPostText,
+    UserID: state.ProfilePage.UserID,
  }};
 
 export default connect (mapStateToProps,
-  {addPost, addNewPost, setUserProfile}) (ProfileContainer);
+  {addPost, addNewPost, setUserProfile, setUserID}) (ProfileContainer);

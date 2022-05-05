@@ -1,6 +1,7 @@
 import styles from './userInfo.module.css';
 import userPhoto from '../../images/customer_person_people_man.png';
 import Preloader from '../../../common/preloader/isFetching_preloader';
+import Banner from '../../images/Baner.jpg'
 
 const UserInfo = (props) => {
   if (!props.Profile) {
@@ -11,7 +12,7 @@ const UserInfo = (props) => {
     <div>
     <div className={styles.wrapper}>
     <img
-        src="https://interier-foto.ru/wp-content/uploads/2014/11/severo-chujskij-hrebet6393.jpg"
+        src={Banner}
         alt="banner"
         width="1200"
         height="300"
@@ -27,7 +28,7 @@ const UserInfo = (props) => {
       />
         <div className={styles.description}>
           <h1 className={styles.name}>{props.Profile.fullName}</h1>
-          <p className={styles.about}>{props.Profile.aboutMe}</p>
+          <p className={styles.about}>User ID: {props.Profile.userId}</p>
         </div>
       </div>
 </div>

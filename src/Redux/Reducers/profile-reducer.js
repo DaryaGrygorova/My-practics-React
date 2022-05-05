@@ -1,6 +1,7 @@
 const ADD_POST = 'ADD-POST';
 const UPDATE_POST_TEXT = 'UPDATE-POST-TEXT';
 const SET_USER_PROFILE = "SET_USER_PROFILE";
+const SET_USER_ID = "SET_USER_ID";
 
 let initialState = {
   PostsData: [
@@ -10,6 +11,7 @@ let initialState = {
   ],
   NewPostText: '',
   Profile: null,
+  UserID: null,
   // Profile: [{id: 13524, aboutMe: 'Слава Україні!',}],
   isFetching: true,
 
@@ -30,10 +32,15 @@ export const profileReducer = (state = initialState, action) => {
       };
 
     case SET_USER_PROFILE: {
-      let stateCopy = {...state,
+      return {...state,
         Profile: action.profile,
         }
-        return stateCopy;
+    }
+
+    case SET_USER_ID: {
+      return {...state,
+        UserID: action.userID,
+      }
     }
 
     default: return state;
@@ -43,3 +50,4 @@ export const profileReducer = (state = initialState, action) => {
 export const setUserProfile= (profile) =>({type: SET_USER_PROFILE, profile});
 export let addPost = () => ({type: ADD_POST});
 export let addNewPost = (newText) => ({type: UPDATE_POST_TEXT, newText});
+export const setUserID = (userID) =>({type: SET_USER_ID, userID})
