@@ -15,6 +15,7 @@ class ProfileContainer extends React.Component {
   }
 
   onPageChanged = (UserID) => {
+    if (!this.props.UserID) {this.props.UserID = 13254}
     axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${this.props.UserID}`)
       .then(response => {
         this.props.setUsers(response.data.items);
@@ -23,7 +24,7 @@ class ProfileContainer extends React.Component {
   }
 
   render() {
-    return <Profile {...this.props}/>;
+    return <Profile {...this.props} onPageChanged={this.onPageChanged.bind(this)}/>;
   };
 }
 
