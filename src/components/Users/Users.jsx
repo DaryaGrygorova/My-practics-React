@@ -1,6 +1,7 @@
 import styles from './Users.module.css';
 import userPhoto from '../images/customer_person_people_man.png';
 import { NavLink } from 'react-router-dom';
+import { userAPI } from '../../API/API';
 
 function Users (props) {
   let pageCount = Math.ceil((props.UsersCount / props.PageSize));
@@ -26,8 +27,26 @@ function Users (props) {
           </ NavLink>
         <div className={styles.buttonSet}>
           {Card.followed
-            ? <button className="button" onClick={() => { props.unfollows(Card.id) } }>Unfollow</button>
-            : <button className="button" onClick={() => { props.follows(Card.id) } }>Follow</button> }
+            ? <button className="button" disabled={props.isFollowingInProgress.some(id => id === Card.id)}
+                      onClick={() => {
+              props.toggleIsFollowingInProgress(true, Card.id)
+              userAPI.getUnfollow (Card.id)
+                .then(data => {
+                  props.toggleIsFollowingInProgress(false, Card.id)
+                  if (data.resultCode === 0) {
+                    props.unfollows(Card.id);}; })
+               }
+            } >Unfollow</button>
+            : <button className="button" disabled={props.isFollowingInProgress.some(id => id === Card.id)}
+                      onClick={() => {
+              props.toggleIsFollowingInProgress(true, Card.id)
+              userAPI.getFollow (Card.id)
+                .then(data => {
+                  props.toggleIsFollowingInProgress(false, Card.id)
+                  if (data.resultCode === 0) {
+                    props.follows(Card.id) ;}; })
+            }
+            } >Follow</button> }
         </div>
       </div>
     </div>)}

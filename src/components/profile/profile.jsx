@@ -7,7 +7,8 @@ const Profile = (props) => {
   let params = useParams();
   if (props.UserID !== params.userID ) {
     props.setUserID(params.userID);
-    props.onPageChanged()};
+    };
+  props.onPageChanged()
   return (
     <main className="content">
       <UserInfo Profile={props.Profile}/>

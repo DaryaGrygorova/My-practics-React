@@ -21,13 +21,16 @@ const Header = (props) => {
           {props.isAuth
             ?
          <NavLink to={'/profile/' + props.UserID}>
-            <img
-              className={styles.photo}
+           <div className={styles.thumb}>
+           <img
+             className={styles.photo}
               src={PrettyLady}
               alt='User'
               width="40"
               height="40"
             />
+             <p>{props.login}</p>
+           </div>
           </NavLink>
             : <NavLink to={'/auth/' }><button className="button">Log In</button></NavLink>}
         </div>

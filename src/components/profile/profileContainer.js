@@ -7,21 +7,30 @@ import { connect } from 'react-redux';
 class ProfileContainer extends React.Component {
 
   componentDidMount() {
-    if (!this.props.UserID) {this.props.UserID = 13254}
-      axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${this.props.UserID}`)
+    if (!this.props.UserID) {
+      axios.get(`https://social-network.samuraijs.com/api/1.0/profile/23812`)
          .then(response => {
         this.props.setUserProfile(response.data);
-        })
+        })}
+    else {
+      axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${this.props.UserID}`)
+      .then(response => {
+        this.props.setUserProfile(response.data);
+      })}
   }
 
-  onPageChanged = (UserID) => {
-    if (!this.props.UserID) {this.props.UserID = 13254}
-    axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${this.props.UserID}`)
+  onPageChanged = () => {
+    if (!this.props.UserID) {
+      axios.get(`https://social-network.samuraijs.com/api/1.0/profile/23812}`)
+        .then(response => {
+          this.props.setUserProfile(response.data);
+        })}
+      else { axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${this.props.UserID}`)
       .then(response => {
-        this.props.setUsers(response.data.items);
-        this.props.setUsersCount(response.data.totalCount)
-      })
-  }
+        this.props.setUserProfile(response.data);
+         } ) };
+    }
+
 
   render() {
     return <Profile {...this.props} onPageChanged={this.onPageChanged.bind(this)}/>;
