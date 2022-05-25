@@ -4,6 +4,7 @@ const ADD_POST = 'ADD-POST';
 const UPDATE_POST_TEXT = 'UPDATE-POST-TEXT';
 const SET_USER_PROFILE = "SET_USER_PROFILE";
 const SET_USER_ID = "SET_USER_ID";
+const TOGGLE_IS_FETCHING_PROFILE = "TOGGLE_IS_FETCHING_PROFILE"
 
 let initialState = {
   PostsData: [
@@ -14,7 +15,6 @@ let initialState = {
   NewPostText: '',
   Profile: null,
   UserID: null,
-  // Profile: [{id: 13524, aboutMe: 'Слава Україні!',}],
   isFetching: true,
 
 };
@@ -36,6 +36,7 @@ export const profileReducer = (state = initialState, action) => {
     case SET_USER_PROFILE: {
       return {...state,
         Profile: action.profile,
+        UserID: action.userId,
         }
     }
 
@@ -45,20 +46,30 @@ export const profileReducer = (state = initialState, action) => {
       }
     }
 
+    case TOGGLE_IS_FETCHING_PROFILE:
+    {
+      return {...state,
+        isFetching: action.isFetching,
+      }
+    }
+
     default: return state;
   }
 };
 
-export const setUserProfile= (profile) =>({type: SET_USER_PROFILE, profile});
+export const setUserProfile= (profile, userId) =>({type: SET_USER_PROFILE, profile, userId});
 export let addPost = () => ({type: ADD_POST});
 export let addNewPost = (newText) => ({type: UPDATE_POST_TEXT, newText});
 export const setUserID = (userID) =>({type: SET_USER_ID, userID});
+export const toggleIsFetchingProfile = (isFetching) =>({type: TOGGLE_IS_FETCHING_PROFILE, isFetching});
 
 export const getProfileThunkCreator = (userId) => {
   return (dispatch) => {
+    dispatch(toggleIsFetchingProfile(true));
     ProfileAPI.getProfile(userId)
     .then(response => {
-      dispatch(setUserProfile(response.data));
+      dispatch(toggleIsFetchingProfile(false));
+      dispatch(setUserProfile(response.data, userId));
     });
   };
 };

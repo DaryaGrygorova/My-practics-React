@@ -4,32 +4,28 @@ import {
   addNewPost,
   addPost,
   getProfileThunkCreator,
-  setUserID,
+  setUserID, toggleIsFetchingProfile,
 } from '../../Redux/Reducers/profile-reducer';
 import { connect } from 'react-redux';
+import Preloader from '../../common/preloader/isFetching_preloader';
 
 class ProfileContainer extends React.Component {
 
   componentDidMount() {
-    this.props.getProfile(this.props.UserID)}
+    let userID = this.props.UserID;
+    if (!userID) {
+      userID = 23812};
+    this.props.getProfile(userID)};
 
-  //   if (!this.props.UserID) {
-  //     axios.get(`https://social-network.samuraijs.com/api/1.0/profile/23812`)
-  //        .then(response => {
-  //       this.props.setUserProfile(response.data);
-  //       })}
-  //   else {
-  //     axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${this.props.UserID}`)
-  //     .then(response => {
-  //       this.props.setUserProfile(response.data);
-  //     })}
-  // }
-
-  onPageChanged = () => {this.props.getProfile(this.props.UserID)}
+  onPageChanged = (UserID) => {
+    setUserID(UserID);
+    this.props.getProfile(UserID)};
 
   render() {
-    return <Profile {...this.props} onPageChanged={this.onPageChanged.bind(this)}/>;
-  };
+    return ( <div>
+      {this.props.isFetching ? <Preloader /> : null}
+      <Profile {...this.props} onPageChanged={this.onPageChanged.bind(this)} />
+      </div> )};
 }
 
 let mapStateToProps = (state) => {
@@ -39,7 +35,9 @@ let mapStateToProps = (state) => {
     PostsData: state.ProfilePage.PostsData,
     NewPostText: state.ProfilePage.NewPostText,
     UserID: state.ProfilePage.UserID,
+    isFetching: state.ProfilePage.isFetching,
+    isAuth: state.Auth.isAuth,
  }};
 
 export default connect (mapStateToProps,
-  {addPost, addNewPost, setUserID, getProfile: getProfileThunkCreator}) (ProfileContainer);
+  {addPost, addNewPost, setUserID, getProfile: getProfileThunkCreator, toggleIsFetchingProfile}) (ProfileContainer);
