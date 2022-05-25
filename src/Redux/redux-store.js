@@ -1,4 +1,5 @@
-import { combineReducers, createStore } from 'redux';
+import { applyMiddleware, combineReducers, createStore } from 'redux';
+import thunkMiddleware from 'redux-thunk';
 import { profileReducer } from './Reducers/profile-reducer';
 import { dialogsReducer } from './Reducers/dialogs-reducer';
 import { sidebarReducer } from './Reducers/sidebar-reducer';
@@ -14,6 +15,6 @@ let reducerStack = combineReducers({
   }
 );
 
-let store = createStore(reducerStack);
+let store = createStore(reducerStack, applyMiddleware(thunkMiddleware));
 window.store=store
 export default store;
