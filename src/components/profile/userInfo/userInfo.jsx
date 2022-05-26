@@ -30,7 +30,7 @@ const UserInfo = (props) => {
         <div className={styles.description}>
           <h1 className={styles.name}>{props.Profile.fullName}</h1>
           <p className={styles.about}>User ID: {props.Profile.userId}</p>
-          <UserStatus status={'Hello'}/>
+          <UserStatus status={props.status} updateStatus={props.updateStatus}/>
         </div>
       </div>
 </div>

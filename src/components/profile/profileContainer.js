@@ -1,14 +1,12 @@
 import React from 'react';
 import Profile from './profile';
 import {
-  addNewPost,
-  addPost,
-  getProfileThunkCreator,
-  setUserID, toggleIsFetchingProfile,
+  addNewPost, addPost, getProfileThunkCreator,
+  getStatusThunkCreator, setUserID,
+  toggleIsFetchingProfile, updateStatusThunkCreator,
 } from '../../Redux/Reducers/profile-reducer';
 import { connect } from 'react-redux';
 import Preloader from '../../common/preloader/isFetching_preloader';
-import { Navigate } from 'react-router-dom';
 import { withAuthRedirect } from '../hoc/AuthRedirect';
 import { compose } from 'redux';
 
@@ -18,15 +16,14 @@ class ProfileContainer extends React.Component {
     let userID = this.props.UserID;
     if (!userID) {
       userID = 23812};
-    this.props.getProfile(userID)};
+    this.props.getProfile(userID)
+    this.props.getStatus(userID)};
 
   onPageChanged = (UserID) => {
-    setUserID(UserID);
+    this.props.setUserID(UserID);
     this.props.getProfile(UserID)};
 
   render() {
-
-    if (!this.props.isAuth) {return <Navigate to={'/login'} />};
 
     return ( <div>
       {this.props.isFetching ? <Preloader /> : null}
@@ -42,13 +39,16 @@ let mapStateToProps = (state) => {
     NewPostText: state.ProfilePage.NewPostText,
     UserID: state.ProfilePage.UserID,
     isFetching: state.ProfilePage.isFetching,
+    status: state.ProfilePage.status,
  }};
 
 export default compose(
   connect (mapStateToProps,
       {addPost, addNewPost, setUserID,
-        getProfile: getProfileThunkCreator, toggleIsFetchingProfile}),
-  withAuthRedirect)
+        getProfile: getProfileThunkCreator, toggleIsFetchingProfile,
+        getStatus: getStatusThunkCreator, updateStatus: updateStatusThunkCreator}),
+  withAuthRedirect
+)
   (ProfileContainer);
 
 

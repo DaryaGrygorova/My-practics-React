@@ -12,7 +12,7 @@ const Profile = (props) => {
 
   return (
     <main className="content">
-      <UserInfo Profile={props.Profile}/>
+      <UserInfo Profile={props.Profile} status={props.status} updateStatus={props.updateStatus}/>
       <div className={styles.wrapper}>
       <MyPosts PostsData={props.PostsData} NewPostText={props.NewPostText}
                onClick={props.addPost} handleChange={props.addNewPost}/>
