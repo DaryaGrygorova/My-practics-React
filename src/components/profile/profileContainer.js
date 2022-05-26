@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 import Preloader from '../../common/preloader/isFetching_preloader';
 import { Navigate } from 'react-router-dom';
 import { withAuthRedirect } from '../hoc/AuthRedirect';
+import { compose } from 'redux';
 
 class ProfileContainer extends React.Component {
 
@@ -43,5 +44,11 @@ let mapStateToProps = (state) => {
     isFetching: state.ProfilePage.isFetching,
  }};
 
-export default withAuthRedirect(connect (mapStateToProps,
-  {addPost, addNewPost, setUserID, getProfile: getProfileThunkCreator, toggleIsFetchingProfile}) (ProfileContainer));
+export default compose(
+  connect (mapStateToProps,
+      {addPost, addNewPost, setUserID,
+        getProfile: getProfileThunkCreator, toggleIsFetchingProfile}),
+  withAuthRedirect)
+  (ProfileContainer);
+
+

@@ -2,6 +2,7 @@ import styles from './userInfo.module.css';
 import userPhoto from '../../images/customer_person_people_man.png';
 import Preloader from '../../../common/preloader/isFetching_preloader';
 import Banner from '../../images/Baner.jpg'
+import UserStatus from './userStatus';
 
 const UserInfo = (props) => {
   if (!props.Profile) {
@@ -29,6 +30,7 @@ const UserInfo = (props) => {
         <div className={styles.description}>
           <h1 className={styles.name}>{props.Profile.fullName}</h1>
           <p className={styles.about}>User ID: {props.Profile.userId}</p>
+          <UserStatus status={'Hello'}/>
         </div>
       </div>
 </div>
