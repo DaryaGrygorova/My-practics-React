@@ -32,7 +32,6 @@ class UserStatus extends React.Component {
   };
 
   render() {
-    debugger
     return (
       <div>
         {(!this.state.editMode)

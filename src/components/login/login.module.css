@@ -24,16 +24,22 @@
 
 .label {
     display: block;
-    margin-bottom: 15px;
 }
 
 .input {
     display: block;
     width: 100%;
+    margin-bottom: 15px;
     margin-top: 8px;
     text-align: center;
 }
 
 .button {
     margin: 20px auto;
+    color: #b1b7c5;
+}
+
+.checkbox__label {
+    display: inline-block;
+    margin-left: 10px;
 }
