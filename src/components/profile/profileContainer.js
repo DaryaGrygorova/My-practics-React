@@ -8,6 +8,8 @@ import {
 } from '../../Redux/Reducers/profile-reducer';
 import { connect } from 'react-redux';
 import Preloader from '../../common/preloader/isFetching_preloader';
+import { Navigate } from 'react-router-dom';
+import { AuthRedirect } from '../hoc/AuthRedirect';
 
 class ProfileContainer extends React.Component {
 
@@ -22,11 +24,16 @@ class ProfileContainer extends React.Component {
     this.props.getProfile(UserID)};
 
   render() {
+
+    if (!this.props.isAuth) {return <Navigate to={'/login'} />};
+
     return ( <div>
       {this.props.isFetching ? <Preloader /> : null}
       <Profile {...this.props} onPageChanged={this.onPageChanged.bind(this)} />
       </div> )};
 }
+
+let AuthRedirectWrapperComponent = AuthRedirect(ProfileContainer)
 
 let mapStateToProps = (state) => {
   return {
@@ -40,4 +47,4 @@ let mapStateToProps = (state) => {
  }};
 
 export default connect (mapStateToProps,
-  {addPost, addNewPost, setUserID, getProfile: getProfileThunkCreator, toggleIsFetchingProfile}) (ProfileContainer);
+  {addPost, addNewPost, setUserID, getProfile: getProfileThunkCreator, toggleIsFetchingProfile}) (AuthRedirectWrapperComponent);

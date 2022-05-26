@@ -2,13 +2,14 @@ import React from 'react';
 import styles from './profile.module.css';
 import UserInfo from './userInfo/userInfo';
 import MyPosts from './myPosts/myPosts';
-import { useParams } from 'react-router-dom';
+import {useParams} from 'react-router-dom';
 
 const Profile = (props) => {
   let params = useParams();
   let userID = params.userID
     if (userID !== props.UserID)
     {props.onPageChanged(userID)};
+
   return (
     <main className="content">
       <UserInfo Profile={props.Profile}/>
