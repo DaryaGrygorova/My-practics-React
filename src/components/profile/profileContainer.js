@@ -9,7 +9,7 @@ import {
 import { connect } from 'react-redux';
 import Preloader from '../../common/preloader/isFetching_preloader';
 import { Navigate } from 'react-router-dom';
-import { AuthRedirect } from '../hoc/AuthRedirect';
+import { withAuthRedirect } from '../hoc/AuthRedirect';
 
 class ProfileContainer extends React.Component {
 
@@ -31,9 +31,7 @@ class ProfileContainer extends React.Component {
       {this.props.isFetching ? <Preloader /> : null}
       <Profile {...this.props} onPageChanged={this.onPageChanged.bind(this)} />
       </div> )};
-}
-
-let AuthRedirectWrapperComponent = AuthRedirect(ProfileContainer)
+};
 
 let mapStateToProps = (state) => {
   return {
@@ -43,8 +41,7 @@ let mapStateToProps = (state) => {
     NewPostText: state.ProfilePage.NewPostText,
     UserID: state.ProfilePage.UserID,
     isFetching: state.ProfilePage.isFetching,
-    isAuth: state.Auth.isAuth,
  }};
 
-export default connect (mapStateToProps,
-  {addPost, addNewPost, setUserID, getProfile: getProfileThunkCreator, toggleIsFetchingProfile}) (AuthRedirectWrapperComponent);
+export default withAuthRedirect(connect (mapStateToProps,
+  {addPost, addNewPost, setUserID, getProfile: getProfileThunkCreator, toggleIsFetchingProfile}) (ProfileContainer));
