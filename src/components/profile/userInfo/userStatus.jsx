@@ -17,6 +17,14 @@ class UserStatus extends React.Component {
     this.props.updateStatus(this.state.status);
   };
 
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (prevProps.status !== this.props.status) {
+      this.setState({
+        status: this.props.status,
+      })
+    }
+  }
+
   onChangeStatus = (event) => {
     this.setState(
       { status: event.currentTarget.value },
