@@ -2,6 +2,7 @@ import Post from './post/post';
 import styles from '../myPosts/myPost.module.css';
 import { Field, Form, Formik } from 'formik';
 import React from 'react';
+import { MyTextarea } from '../../../common/fornsControls/formControls';
 
 const MyPosts = (props) => {
 
@@ -18,6 +19,7 @@ return (
 
 const AddPostForm = (props) => {
   const AddPostFormSubmit = (values: any, { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void}) => {
+   debugger
     setSubmitting(false);
     props.onClick(values.NewPostText)
   };
@@ -26,15 +28,22 @@ const AddPostForm = (props) => {
     <Formik
       initialValues={{ NewPostText: ''}}
       onSubmit={AddPostFormSubmit}
+      // validate={ values => {
+      //   const errors = {NewPostText: ''};
+      //   if (values.NewPostText.length >= 300) {errors.NewPostText = "Your post is very long"};
+      //   return errors;}}
     >
-      {({ isSubmitting }) => (
+      {({touched, errors, isSubmitting }) => (
         <Form className={styles.thumb}>
-          <Field type="text"
-                 className={styles.input}
+          <Field
+                 component={MyTextarea}
+                 as="textarea"
                  name="NewPostText"
                  placeholder="Enter the text..."
+                 row="3"
                  required
-                 value={props.NewPostText} />
+                 value={props.NewPostText}
+                 />
           <button type="submit"
                   disabled={isSubmitting}
                   className={`${styles.button} button`}>

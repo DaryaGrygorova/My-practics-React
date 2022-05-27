@@ -2,6 +2,7 @@ import styles from "./chat.module.css"
 import Message from '../message/message';
 import { Field, Form, Formik } from 'formik';
 import React from 'react';
+import { MyTextarea } from '../../../common/fornsControls/formControls';
 
 const Chat = (props) => {
 
@@ -37,11 +38,15 @@ const ChatForm = (props) => {
   <Formik
     initialValues={{ newMessText: ''}}
     onSubmit={chatFormSubmit}
+    // validate={ values => {
+    //   const errors = {newMessText: ''};
+    //   if (values.newMessText.length >= 300) {errors.newMessText = "Your message is very long"};
+    //   return errors;}}
   >
-    {({ isSubmitting }) => (
+    {({touched, errors, isSubmitting }) => (
       <Form className={styles.thumb}>
-        <Field type="text"
-               className={styles.input}
+        <Field component={MyTextarea}
+               as="textarea"
                name="newMessText"
                rows="1"
                placeholder="Введите текст..."
@@ -49,7 +54,7 @@ const ChatForm = (props) => {
                value={props.newMessText} />
         <button type="submit"
                 disabled={isSubmitting}
-                className="button">
+                className={`${styles.button} button`}>
           Send
         </button>
       </Form>
