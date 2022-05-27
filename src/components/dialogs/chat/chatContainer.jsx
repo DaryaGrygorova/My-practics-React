@@ -1,4 +1,4 @@
-import { addMessActionCreator, addNewMessActionCreator } from '../../../Redux/Reducers/dialogs-reducer';
+import { addMessActionCreator } from '../../../Redux/Reducers/dialogs-reducer';
 import Chat from './chat';
 import { connect } from 'react-redux';
 
@@ -11,8 +11,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleChange: (newText) => dispatch(addNewMessActionCreator(newText)),
-    onClick: () => dispatch(addMessActionCreator())
+    onClick: (newMessText) => dispatch(addMessActionCreator(newMessText))
   };
 };
 

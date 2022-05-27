@@ -1,7 +1,7 @@
 import React from 'react';
 import Profile from './profile';
 import {
-  addNewPost, addPost, getProfileThunkCreator,
+  addPost, getProfileThunkCreator,
   getStatusThunkCreator, setUserID,
   toggleIsFetchingProfile, updateStatusThunkCreator,
 } from '../../Redux/Reducers/profile-reducer';
@@ -44,7 +44,7 @@ let mapStateToProps = (state) => {
 
 export default compose(
   connect (mapStateToProps,
-      {addPost, addNewPost, setUserID,
+      {addPost, setUserID,
         getProfile: getProfileThunkCreator, toggleIsFetchingProfile,
         getStatus: getStatusThunkCreator, updateStatus: updateStatusThunkCreator}),
   withAuthRedirect

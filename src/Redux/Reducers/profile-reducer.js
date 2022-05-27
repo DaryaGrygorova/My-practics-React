@@ -1,7 +1,6 @@
 import { ProfileAPI } from '../../API/API';
 
 const ADD_POST = 'ADD-POST';
-const UPDATE_POST_TEXT = 'UPDATE-POST-TEXT';
 const SET_USER_PROFILE = "SET_USER_PROFILE";
 const SET_USER_ID = "SET_USER_ID";
 const TOGGLE_IS_FETCHING_PROFILE = "TOGGLE_IS_FETCHING_PROFILE"
@@ -13,7 +12,6 @@ let initialState = {
     { id: 2, name: 'Jolly Docker', message: 'It\'s my first post', time: '14:55', likeCounter: 5 },
     { id: 3, name: 'Jolly Docker', message: 'How are you?', time: '14:58', likeCounter: 7 },
   ],
-  NewPostText: '',
   Profile: null,
   UserID: null,
   isFetching: true,
@@ -23,15 +21,10 @@ let initialState = {
 
 export const profileReducer = (state = initialState, action) => {
   switch (action.type) {
-    case UPDATE_POST_TEXT:
-      return {
-        ...state,
-        NewPostText: action.newText};
 
     case ADD_POST:
-      let newPost = state.NewPostText;
+      let newPost = action.NewPostText;
       return {...state,
-        NewPostText: '',
         PostsData: [...state.PostsData, {id: 5, name: 'Jolly Docker', message: (newPost), time: '14:58', likeCounter: 0 }],
       };
 
@@ -67,8 +60,7 @@ export const profileReducer = (state = initialState, action) => {
 };
 
 export const setUserProfile= (profile, userId) =>({type: SET_USER_PROFILE, profile, userId});
-export let addPost = () => ({type: ADD_POST});
-export let addNewPost = (newText) => ({type: UPDATE_POST_TEXT, newText});
+export let addPost = (NewPostText) => ({type: ADD_POST, NewPostText});
 export const setUserID = (userID) =>({type: SET_USER_ID, userID});
 export const toggleIsFetchingProfile = (isFetching) =>({type: TOGGLE_IS_FETCHING_PROFILE, isFetching});
 export const setStatus = (status) =>({type: SET_STATUS, status});
