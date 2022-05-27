@@ -17,22 +17,25 @@ const Header = (props) => {
           />
           <span className="logo__text">BabaGram</span>
         </div>
-        <div className={styles.wrapper}>
+        <div >
           {props.isAuth
             ?
-         <NavLink to={'/profile/' + props.UserID}>
-           <div className={styles.thumb}>
-           <img
+         <div className={styles.wrapper}>
+           <NavLink to={'/profile/' + props.UserID}>
+             <div className={styles.thumb}>
+               <img
              className={styles.photo}
               src={PrettyLady}
               alt='User'
               width="40"
               height="40"
             />
-             <p>{props.login}</p>
-           </div>
-          </NavLink>
-            : <NavLink to={'/auth/' }><button className="button">Log In</button></NavLink>}
+               <p>{props.login}</p>
+             </div>
+           </NavLink>
+           <button className={`${styles.button} button`} onClick={props.logOut}>Log Out</button>
+         </div>
+            : <NavLink to={'/login/' }><button className={`${styles.button} button`}>Log In</button></NavLink>}
         </div>
       </div>
     </header>

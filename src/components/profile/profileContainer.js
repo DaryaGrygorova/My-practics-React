@@ -17,7 +17,8 @@ class ProfileContainer extends React.Component {
     if (!userID) {
       userID = 23812};
     this.props.getProfile(userID)
-    this.props.getStatus(userID)};
+    this.props.getStatus(userID)
+  };
 
   onPageChanged = (UserID) => {
     this.props.setUserID(UserID);

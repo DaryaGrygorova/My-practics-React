@@ -11,7 +11,7 @@ let reducerStack = combineReducers({
   MessagePage: dialogsReducer,
   UsersPage: UserReducer,
   Sidebar: sidebarReducer,
-  Auth: AuthReducer,
+  AuthPage: AuthReducer,
   }
 );
 

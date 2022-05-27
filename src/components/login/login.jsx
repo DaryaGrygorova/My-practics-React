@@ -1,28 +1,43 @@
 import styles from './login.module.css'
 import React from 'react';
-import { ErrorMessage, Field, Form, Formik } from 'formik';
+import { Navigate } from 'react-router-dom';
+import { Field, Form, Formik } from 'formik';
+import { MyInput } from '../../common/fornsControls/formControls';
+import { logInThunkCreator } from '../../Redux/Reducers/auth-reducer';
+import { connect } from 'react-redux';
 
 const LoginForm = (props) => {
 
 const submit = (values: any, { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void}) => {
   setSubmitting(false);
-
-};
+    console.log(setSubmitting)
+  debugger
+  props.logIn(values.email, values.password, values.rememberMe)
+  };
 
   return (
     <Formik
-      initialValues={{login: '', password: '', rememberMe: false}}
+      initialValues={{email: '', password: '', rememberMe: false}}
       onSubmit={submit}
-    >
+      validate={values => {
+        const errors = {};
+        if (!values.email) {
+          errors.email = 'Required';
+        } else if (
+          !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+        ) {
+          errors.email = 'Invalid email address';
+        }
+        return errors;
+      } }
+       >
       {({ isSubmitting }) => (
         <Form className={styles.form}>
         <label className={styles.label} htmlFor="login">Login</label>
-        <Field id="login" type="text" name="login" className={styles.input}/>
-          <ErrorMessage name="email" component="div" />
+        <Field id="login" component={MyInput} type="email" name="email" className={styles.input}/>
           <label className={styles.label} htmlFor="password">Password</label>
-          <Field id="password" type="password" name="password" className={styles.input}/>
-          <ErrorMessage name="password" component="div" />
-          <Field id="rememberMe" type="checkbox" name="rememberMe" className={styles.checkbox}/>
+          <Field id="password" component={MyInput} type="password" name="password" className={styles.input} autoComplete={"false"}/>
+          <Field id="rememberMe" type="checkbox" name="rememberMe" className={styles.checkbox} />
           <label className={styles.checkbox__label} htmlFor="rememberMe">Remember me</label>
           <button type="submit" disabled={isSubmitting} className={`${styles.button} button`}>
             Login
@@ -34,12 +49,21 @@ const submit = (values: any, { setSubmitting }: { setSubmitting: (isSubmitting: 
 }
 
 const Login = (props) => {
+  if (props.isAuth) {
+    return <Navigate to={`/profile/ ${props.userId}`} />;
+  }
+
   return (<div className="content">
     <div className={styles.wrapper}>
       <h1 className={styles.title}>LOGIN</h1>
-      <LoginForm />
+      <LoginForm logIn={props.logIn} logOut={props.logOut}/>
     </div>
   </div>)
 }
 
-export default Login;
+const mapStateToProps = (state) => ({
+  userId: state.AuthPage.UserID,
+  isAuth: state.AuthPage.isAuth,
+});
+
+export default connect (mapStateToProps, {logIn: logInThunkCreator} ) (Login);

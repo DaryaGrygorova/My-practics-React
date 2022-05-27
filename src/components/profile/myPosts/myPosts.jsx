@@ -19,7 +19,6 @@ return (
 
 const AddPostForm = (props) => {
   const AddPostFormSubmit = (values: any, { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void}) => {
-   debugger
     setSubmitting(false);
     props.onClick(values.NewPostText)
   };
@@ -28,10 +27,10 @@ const AddPostForm = (props) => {
     <Formik
       initialValues={{ NewPostText: ''}}
       onSubmit={AddPostFormSubmit}
-      // validate={ values => {
-      //   const errors = {NewPostText: ''};
-      //   if (values.NewPostText.length >= 300) {errors.NewPostText = "Your post is very long"};
-      //   return errors;}}
+      validate={ values => {
+      const errors = {};
+        if (values.NewPostText.length >= 300) {errors.NewPostText = "Your post is very long"};
+        return errors;}}
     >
       {({touched, errors, isSubmitting }) => (
         <Form className={styles.thumb}>

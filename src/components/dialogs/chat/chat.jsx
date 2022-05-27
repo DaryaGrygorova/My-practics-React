@@ -38,10 +38,10 @@ const ChatForm = (props) => {
   <Formik
     initialValues={{ newMessText: ''}}
     onSubmit={chatFormSubmit}
-    // validate={ values => {
-    //   const errors = {newMessText: ''};
-    //   if (values.newMessText.length >= 300) {errors.newMessText = "Your message is very long"};
-    //   return errors;}}
+    validate={ values => {
+      const errors = {};
+      if (values.newMessText.length >= 300) {errors.newMessText = "Your message is very long"};
+      return errors;}}
   >
     {({touched, errors, isSubmitting }) => (
       <Form className={styles.thumb}>
