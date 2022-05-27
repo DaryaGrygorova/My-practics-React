@@ -1,12 +1,15 @@
 import { authAPI } from '../../API/API';
 
+const IS_SUBMIT_ERROR = 'IS_SUBMIT_ERROR';
 const SET_USER_DATA = 'SET_USER_DATA';
 
 let initialState = {
   UserID: null,
   email: null,
   login: null,
-  isAuth: false
+  isAuth: false,
+  errorStatus: false,
+  errorMessage: '',
 };
 
 const AuthReducer = (state = initialState, action) => {
@@ -21,10 +24,18 @@ const AuthReducer = (state = initialState, action) => {
       };
     }
 
+    case IS_SUBMIT_ERROR: {
+      return {
+        ...state,
+        errorStatus: action.status,
+        errorMessage: action.message
+      }
+    }
     default: return state;
   }}
 
 export const setUserData = (UserID, email, login, isAuth) =>({type: SET_USER_DATA, UserID, email, login, isAuth});
+export const isSubmitError = (status, message) => ({type: IS_SUBMIT_ERROR, status, message})
 export const getAuthThunkCreator = () => {
   return (dispatch) => {
     authAPI.getAuth ()
@@ -43,7 +54,13 @@ export const logInThunkCreator = (email, password, rememberMe) => {
       .then( data => {
         if (data.resultCode === 0) {
           dispatch(getAuthThunkCreator());
-        };
+          dispatch(isSubmitError(false, ''))
+        } else {
+          let message = data.messages
+          dispatch(isSubmitError(true, message))
+        }
+
+          ;
       });
   };
 };

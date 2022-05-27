@@ -39,6 +39,7 @@ const submit = (values: any, { setSubmitting }: { setSubmitting: (isSubmitting: 
           <Field id="password" component={MyInput} type="password" name="password" className={styles.input} autoComplete={"false"}/>
           <Field id="rememberMe" type="checkbox" name="rememberMe" className={styles.checkbox} />
           <label className={styles.checkbox__label} htmlFor="rememberMe">Remember me</label>
+          {props.errorStatus ? <div className={styles.error}>{props.errorMessage}</div> : null}
           <button type="submit" disabled={isSubmitting} className={`${styles.button} button`}>
             Login
           </button>
@@ -56,7 +57,7 @@ const Login = (props) => {
   return (<div className="content">
     <div className={styles.wrapper}>
       <h1 className={styles.title}>LOGIN</h1>
-      <LoginForm logIn={props.logIn} logOut={props.logOut}/>
+      <LoginForm errorStatus={props.errorStatus} errorMessage={props.errorMessage} logIn={props.logIn} logOut={props.logOut}/>
     </div>
   </div>)
 }
@@ -64,6 +65,8 @@ const Login = (props) => {
 const mapStateToProps = (state) => ({
   userId: state.AuthPage.UserID,
   isAuth: state.AuthPage.isAuth,
+  errorStatus: state.AuthPage.errorStatus,
+  errorMessage: state.AuthPage.errorMessage
 });
 
 export default connect (mapStateToProps, {logIn: logInThunkCreator} ) (Login);

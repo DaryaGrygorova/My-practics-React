@@ -43,3 +43,8 @@
     display: inline-block;
     margin-left: 10px;
 }
+
+.error {
+    margin: 8px auto;
+    color: mediumvioletred;
+}
