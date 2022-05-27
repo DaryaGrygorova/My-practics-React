@@ -48,3 +48,8 @@
     margin: 8px auto;
     color: mediumvioletred;
 }
+
+.inputError {
+    border-color: mediumvioletred;
+    background-color: rgb(252, 169, 221);
+}

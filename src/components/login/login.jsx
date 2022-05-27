@@ -34,9 +34,16 @@ const submit = (values: any, { setSubmitting }: { setSubmitting: (isSubmitting: 
       {({ isSubmitting }) => (
         <Form className={styles.form}>
         <label className={styles.label} htmlFor="login">Login</label>
-        <Field id="login" component={MyInput} type="email" name="email" className={styles.input}/>
+        <Field id="login"
+               component={MyInput}
+               type="email" name="email"
+               className={props.errorStatus ? `${styles.input} ${styles.inputError}` : `${styles.input}`}/>
           <label className={styles.label} htmlFor="password">Password</label>
-          <Field id="password" component={MyInput} type="password" name="password" className={styles.input} autoComplete={"false"}/>
+          <Field id="password"
+                 component={MyInput}
+                 type="password" name="password"
+                 className={props.errorStatus ? `${styles.input} ${styles.inputError}` : `${styles.input}`}
+                 autoComplete={"false"}/>
           <Field id="rememberMe" type="checkbox" name="rememberMe" className={styles.checkbox} />
           <label className={styles.checkbox__label} htmlFor="rememberMe">Remember me</label>
           {props.errorStatus ? <div className={styles.error}>{props.errorMessage}</div> : null}

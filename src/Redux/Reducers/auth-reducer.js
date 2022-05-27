@@ -56,7 +56,7 @@ export const logInThunkCreator = (email, password, rememberMe) => {
           dispatch(getAuthThunkCreator());
           dispatch(isSubmitError(false, ''))
         } else {
-          let message = data.messages
+          let message = (data.messages ?? "Something went wrong, please try again later...")
           dispatch(isSubmitError(true, message))
         }
 
