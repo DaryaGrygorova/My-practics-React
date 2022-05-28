@@ -4,20 +4,31 @@ import Users from './Users';
 import {
   followsSuccess,
   setCurrentPage,
-  unfollowsSuccess, toggleIsFollowingInProgress, getUsersThunkCreator, unFollowThunkCreator, followThunkCreator,
+  unfollowsSuccess,
+  toggleIsFollowingInProgress,
+  unFollowThunkCreator,
+  followThunkCreator,
+  requestUsersThunkCreator,
 } from '../../Redux/Reducers/users-reducer';
 import Preloader from '../../common/preloader/isFetching_preloader';
 import { withAuthRedirect } from '../hoc/AuthRedirect';
 import { compose } from 'redux';
+import {
+  getCurrentPage,
+  getIsFetching, getIsFollowingInProgress,
+  getPageSize,
+  getTotalUsersCount,
+  getUsers,
+} from '../../Redux/Selectors/user-selectors';
 
 class UsersContainer extends React.Component {
 
   componentDidMount() {
-    this.props.getUsers(this.props.CurrentPage, this.props.PageSize);
+    this.props.requestUsers(this.props.CurrentPage, this.props.PageSize);
   }
 
   onPageChanged = (pageNumb) => {
-    this.props.getUsers(pageNumb, this.props.PageSize);
+    this.props.requestUsers(pageNumb, this.props.PageSize);
     this.props.setCurrentPage(pageNumb);
   }
 
@@ -39,19 +50,19 @@ class UsersContainer extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    Users: state.UsersPage.Users,
-    PageSize: state.UsersPage.pageSize,
-    UsersCount: state.UsersPage.totalUsersCount,
-    CurrentPage: state.UsersPage.currentPage,
-    isFetching: state.UsersPage.isFetching,
-    isFollowingInProgress: state.UsersPage.isFollowingInProgress,
+    Users: getUsers(state),
+    PageSize: getPageSize(state),
+    UsersCount: getTotalUsersCount(state),
+    CurrentPage: getCurrentPage(state),
+    isFetching: getIsFetching(state),
+    isFollowingInProgress: getIsFollowingInProgress(state),
   };
 };
 
 export default compose(
   connect (mapStateToProps,
   {followsSuccess, unfollowsSuccess,
-    setCurrentPage, toggleIsFollowingInProgress, getUsers: getUsersThunkCreator,
+    setCurrentPage, toggleIsFollowingInProgress, requestUsers: requestUsersThunkCreator,
     unfollow: unFollowThunkCreator,  follow: followThunkCreator}),
     withAuthRedirect
 )
