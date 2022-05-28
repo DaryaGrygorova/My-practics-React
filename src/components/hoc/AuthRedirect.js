@@ -13,7 +13,6 @@ export const withAuthRedirect = (Component) => {
   const mapStateToProps = (state) => {
     return {
       isAuth: state.AuthPage.isAuth,
-      userId: state.AuthPage.UserID,
     };
   };
 const RedirectComponent = connect (mapStateToProps)(AuthRedirectComponent)

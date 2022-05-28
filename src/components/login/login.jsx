@@ -11,7 +11,6 @@ const LoginForm = (props) => {
 const submit = (values: any, { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void}) => {
   setSubmitting(false);
     console.log(setSubmitting)
-  debugger
   props.logIn(values.email, values.password, values.rememberMe)
   };
 

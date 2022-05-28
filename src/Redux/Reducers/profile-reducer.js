@@ -1,11 +1,11 @@
 import { ProfileAPI } from '../../API/API';
 
-const ADD_POST = 'ADD-POST';
-const DELETE_POST = 'DELETE_POST';
-const SET_USER_PROFILE = "SET_USER_PROFILE";
-const SET_USER_ID = "SET_USER_ID";
-const TOGGLE_IS_FETCHING_PROFILE = "TOGGLE_IS_FETCHING_PROFILE"
-const SET_STATUS = "SET_STATUS";
+const ADD_POST = 'PROFILE/ADD-POST';
+const DELETE_POST = 'PROFILE/DELETE_POST';
+const SET_USER_PROFILE = "PROFILE/SET_USER_PROFILE";
+const SET_USER_ID = "PROFILE/SET_USER_ID";
+const TOGGLE_IS_FETCHING_PROFILE = "PROFILE/TOGGLE_IS_FETCHING_PROFILE"
+const SET_STATUS = "PROFILE/SET_STATUS";
 
 let initialState = {
   PostsData: [
@@ -31,7 +31,7 @@ export const profileReducer = (state = initialState, action) => {
 
     case DELETE_POST:
       return {...state,
-        PostsData: state.PostsData.filter(post => post.id != action.postId)
+        PostsData: state.PostsData.filter(post => post.id !== action.postId)
       };
 
     case SET_USER_PROFILE: {
@@ -74,32 +74,27 @@ export const setStatus = (status) =>({type: SET_STATUS, status});
 
 
 export const getProfileThunkCreator = (userId) => {
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(toggleIsFetchingProfile(true));
-    ProfileAPI.getProfile(userId)
-    .then(response => {
-      dispatch(toggleIsFetchingProfile(false));
-      dispatch(setUserProfile(response.data, userId));
-    });
+    let response = await ProfileAPI.getProfile(userId)
+        dispatch(toggleIsFetchingProfile(false));
+        dispatch(setUserProfile(response.data, userId));
   };
 };
 
 export const getStatusThunkCreator = (userID) => {
-  return (dispatch) => {
-  ProfileAPI.getStatus(userID)
-    .then(response => {
+  return async (dispatch) => {
+    let response = await ProfileAPI.getStatus(userID)
       dispatch(setStatus(response.data));
-    });
-};
+  };
 };
 
 export const updateStatusThunkCreator = (status) => {
-  return (dispatch) => {
-    ProfileAPI.updateStatus(status)
-      .then(response => {
+  return async (dispatch) => {
+    let response = await ProfileAPI.updateStatus(status)
+
         if (response.data.resultCode === 0) {
-        dispatch(setStatus(status))
-      };
-      });
+          dispatch(setStatus(status))
+        };
   };
 };

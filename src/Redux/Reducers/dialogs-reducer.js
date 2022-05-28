@@ -1,4 +1,4 @@
-const ADD_MESS = 'ADD-MESS';
+const ADD_MESS = 'DIALOGS/ADD_MESS';
 
 let initialState = {
   ContactsData: [

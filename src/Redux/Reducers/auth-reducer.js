@@ -1,7 +1,7 @@
 import { authAPI } from '../../API/API';
 
-const IS_SUBMIT_ERROR = 'IS_SUBMIT_ERROR';
-const SET_USER_DATA = 'SET_USER_DATA';
+const IS_SUBMIT_ERROR = 'AUTH/IS_SUBMIT_ERROR';
+const SET_USER_DATA = 'AUTH/SET_USER_DATA';
 
 let initialState = {
   UserID: null,
@@ -37,42 +37,35 @@ const AuthReducer = (state = initialState, action) => {
 export const setUserData = (UserID, email, login, isAuth) =>({type: SET_USER_DATA, UserID, email, login, isAuth});
 export const isSubmitError = (status, message) => ({type: IS_SUBMIT_ERROR, status, message})
 export const getAuthThunkCreator = () => {
-  return (dispatch) => {
-    authAPI.getAuth ()
-      .then( data => {
-        if (data.resultCode === 0) {
-          let { id, email, login} = data.data
-          dispatch(setUserData(id, email, login, true));
-        };
-      });
+  return async (dispatch) => {
+    let response = await authAPI.getAuth();
+    if (response.resultCode === 0) {
+      let { id, email, login } = response.data
+      dispatch(setUserData(id, email, login, true));
+    };
   };
 };
 
 export const logInThunkCreator = (email, password, rememberMe) => {
-  return (dispatch) => {
-    authAPI.logIn (email, password, rememberMe)
-      .then( data => {
-        if (data.resultCode === 0) {
+  return async (dispatch) => {
+    let response = await authAPI.logIn(email, password, rememberMe);
+       if (response.resultCode === 0) {
           dispatch(getAuthThunkCreator());
           dispatch(isSubmitError(false, ''))
         } else {
-          let message = (data.messages ?? "Something went wrong, please try again later...")
+          let message = (response.messages ?? "Something went wrong, please try again later...")
           dispatch(isSubmitError(true, message))
-        }
-
-          ;
-      });
+        };
   };
 };
 
 export const logOutThunkCreator = () => {
-  return (dispatch) => {
-    authAPI.logOut()
-      .then( data => {
-        if (data.resultCode === 0) {
+  return async (dispatch) => {
+    let response = await authAPI.logOut()
+
+        if (response.resultCode === 0) {
           dispatch(setUserData(null, null, null, false));
         };
-      });
   };
 };
 
