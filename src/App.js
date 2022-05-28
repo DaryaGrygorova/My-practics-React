@@ -7,9 +7,12 @@ import UsersContainer from './components/Users/UsersContainer';
 import ProfileContainer from './components/profile/profileContainer';
 import HeaderContainer from './components/header/headerContainer';
 import Login from './components/login/login';
+import store from './Redux/redux-store';
+import { Provider } from 'react-redux';
 
 const App = (props) => {
   return (
+    <Provider store={store}>
     <BrowserRouter>
     <div className="App-wrapper">
       <HeaderContainer />
@@ -39,6 +42,7 @@ const App = (props) => {
       </div>
     </div>
     </BrowserRouter>
+    </Provider>
   );
 };
 

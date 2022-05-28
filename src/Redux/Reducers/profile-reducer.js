@@ -1,6 +1,7 @@
 import { ProfileAPI } from '../../API/API';
 
 const ADD_POST = 'ADD-POST';
+const DELETE_POST = 'DELETE_POST';
 const SET_USER_PROFILE = "SET_USER_PROFILE";
 const SET_USER_ID = "SET_USER_ID";
 const TOGGLE_IS_FETCHING_PROFILE = "TOGGLE_IS_FETCHING_PROFILE"
@@ -26,6 +27,11 @@ export const profileReducer = (state = initialState, action) => {
       let newPost = action.NewPostText;
       return {...state,
         PostsData: [...state.PostsData, {id: 5, name: 'Jolly Docker', message: (newPost), time: '14:58', likeCounter: 0 }],
+      };
+
+    case DELETE_POST:
+      return {...state,
+        PostsData: state.PostsData.filter(post => post.id != action.postId)
       };
 
     case SET_USER_PROFILE: {
@@ -61,9 +67,11 @@ export const profileReducer = (state = initialState, action) => {
 
 export const setUserProfile= (profile, userId) =>({type: SET_USER_PROFILE, profile, userId});
 export let addPost = (NewPostText) => ({type: ADD_POST, NewPostText});
+export let deletePost= (postId) => ({type: DELETE_POST, postId});
 export const setUserID = (userID) =>({type: SET_USER_ID, userID});
 export const toggleIsFetchingProfile = (isFetching) =>({type: TOGGLE_IS_FETCHING_PROFILE, isFetching});
 export const setStatus = (status) =>({type: SET_STATUS, status});
+
 
 export const getProfileThunkCreator = (userId) => {
   return (dispatch) => {
