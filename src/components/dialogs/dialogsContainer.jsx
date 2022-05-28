@@ -1,3 +1,4 @@
+import React from 'react';
 import { connect } from 'react-redux';
 import Dialogs from './dialogs';
 import { withAuthRedirect } from '../hoc/AuthRedirect';

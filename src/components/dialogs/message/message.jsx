@@ -1,6 +1,7 @@
+import React from 'react';
 import styles from "./message.module.css"
 
-const Message = (props) => {
+const Message = React.memo( (props) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.description}>
@@ -17,6 +18,6 @@ const Message = (props) => {
       <p className={styles.data}>{props.time}</p>
     </div>
 );
-};
+});
 
 export default Message;

@@ -1,6 +1,7 @@
 import styles from './post.module.css';
+import React from 'react';
 
-const Post = (props) => {
+const Post = React.memo( (props) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.description}>
@@ -24,6 +25,6 @@ const Post = (props) => {
       </button>
     </div>
   );
-};
+});
 
 export default Post;

@@ -4,7 +4,7 @@ import { Field, Form, Formik } from 'formik';
 import React from 'react';
 import { MyTextarea } from '../../../common/fornsControls/formControls';
 
-const MyPosts = (props) => {
+const MyPosts = React.memo((props) => {
 
 let Posts = props.PostsData.map ( PostItem => <Post key={PostItem.id} id={PostItem.id} name={PostItem.name} message={PostItem.message} likeCounter={PostItem.likeCounter} time={PostItem.time}/> );
 
@@ -15,7 +15,7 @@ return (
       {Posts}
     </div>
   );
-};
+});
 
 const AddPostForm = (props) => {
   const AddPostFormSubmit = (values: any, { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void}) => {

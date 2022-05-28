@@ -23,7 +23,7 @@ class UserStatus extends React.Component {
         status: this.props.status,
       })
     }
-  }
+  };
 
   onChangeStatus = (event) => {
     this.setState(

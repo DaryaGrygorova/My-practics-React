@@ -1,3 +1,4 @@
+import React from 'react';
 import { addMessActionCreator } from '../../../Redux/Reducers/dialogs-reducer';
 import Chat from './chat';
 import { connect } from 'react-redux';

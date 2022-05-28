@@ -1,4 +1,5 @@
-import styles from './startPage.module.css'
+import React from 'react';
+import styles from './startPage.module.css';
 
 const StartPage = () => {
   return (

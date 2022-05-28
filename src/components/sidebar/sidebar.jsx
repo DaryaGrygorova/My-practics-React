@@ -1,4 +1,5 @@
-import styles from './sidebar.module.css'
+import React from 'react';
+import styles from './sidebar.module.css';
 import { NavLink } from 'react-router-dom';
 
 const Sidebar = () => {

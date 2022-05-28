@@ -1,3 +1,4 @@
+import React from 'react';
 import styles from "./header.module.css"
 import { NavLink } from 'react-router-dom';
 import PrettyLady from '../images/PrettyLady.webp'

@@ -1,11 +1,12 @@
+import React from 'react';
 import styles from './userInfo.module.css';
 import userPhoto from '../../images/customer_person_people_man.png';
 import Preloader from '../../../common/preloader/isFetching_preloader';
-import Banner from '../../images/Baner.jpg'
-import UserStatus from './userStatus';
+import Banner from '../../images/Baner.jpg';
 import UserStatusWithHook from './userStatus-withHook';
 
-const UserInfo = (props) => {
+const UserInfo = React.memo((props) => {
+
   if (!props.Profile) {
     return <Preloader />
   };
@@ -37,6 +38,6 @@ const UserInfo = (props) => {
       </div>
 </div>
   );
-};
+})
 
 export default UserInfo;

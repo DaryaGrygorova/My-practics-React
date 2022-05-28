@@ -1,7 +1,8 @@
+import React from 'react';
 import styles from "./contact.module.css"
 import { NavLink } from 'react-router-dom';
 
-const Contact = (props) => {
+const Contact = React.memo((props) => {
   return (
     <NavLink className={styles.wrapper} to={`/dialogs/${props.id}`}>
       <img
@@ -14,6 +15,6 @@ const Contact = (props) => {
         <h2 className={styles.name}>{props.name}</h2>
     </NavLink>
 );
-};
+});
 
 export default Contact;
