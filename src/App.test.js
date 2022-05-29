@@ -1,8 +1,8 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+// import { render, screen } from '@testing-library/react';
+// import Header from "./components/header/header";
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+// test('renders social-network name', () => {
+//   render(<Header />);
+//   const Element = screen.getByText(`BabaGram`);
+//   expect(Element).toBeInTheDocument();
+// });
