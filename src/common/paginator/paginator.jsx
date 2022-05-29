@@ -17,6 +17,17 @@ function Paginator(props) {
 
   return (
     <div className={styles.wrapper}>
+      {portionNumber > 2 && (
+        <button
+          className={styles.button}
+          type="button"
+          onClick={() => {
+            setPortionNumber(1);
+          }}
+        >
+          &lt; &lt; Start
+        </button>
+      )}
       {portionNumber > 1 && (
         <button
           className={styles.button}
