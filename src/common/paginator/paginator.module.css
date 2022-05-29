@@ -1,24 +1,33 @@
+.wrapper {
+  display: flex;
+  margin: 15px auto;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.button {
+  display: block;
+  margin: 0 10px;
+  border-color: transparent;
+  background-color: transparent;
+}
+
 .pageNumbList {
-    display: flex;
-    justify-content: center;
-    align-items: baseline;
-    margin: 5px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .pageNumb {
-    cursor: pointer;
-    margin-bottom: 15px;
+  cursor: pointer;
 }
 
 .pageNumb:not(:last-child) {
-    margin-right: 20px;
+  margin-right: 20px;
 }
 
 .selected {
-    font-size: 24px;
-    font-weight: 700;
+  font-size: 24px;
+  font-weight: 700;
 }
-
-
-
-
