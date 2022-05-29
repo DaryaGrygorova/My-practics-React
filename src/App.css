@@ -5,7 +5,9 @@
   box-sizing: border-box;
 }
 
-h1, h2, p {
+h1,
+h2,
+p {
   margin: 0;
 }
 
@@ -23,7 +25,7 @@ a {
 
 .currentPage {
   font-size: 30px;
-  color: rgb(249, 208, 157)
+  color: rgb(249, 208, 157);
 }
 
 ul {
@@ -40,17 +42,16 @@ ul {
   min-width: 150px;
   font-size: 20px;
   font-weight: 600;
-  color:rgb(93, 43, 177);
-  background-color:rgba(138, 43, 226, .5);
+  color: rgb(93, 43, 177);
+  background-color: rgba(138, 43, 226, 0.5);
   border-radius: 4px;
   transition: color 250ms linear;
 }
 
-.button:hover, .button:focus {
-  color:rgba(255, 255, 255, .8);
-  box-shadow: 0 3px 1px rgb(0 0 0 / 10%),
-  0 1px 2px rgb(0 0 0 / 8%),
-  0 2px 2px rgb(0 0 0 / 12%);
+.button:hover,
+.button:focus {
+  color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 3px 1px rgb(0 0 0 / 10%), 0 1px 2px rgb(0 0 0 / 8%), 0 2px 2px rgb(0 0 0 / 12%);
 }
 
 .container {
@@ -62,8 +63,7 @@ ul {
 
 .main-container {
   display: grid;
-  grid-template-areas: 
-  "sidebar content";
+  grid-template-areas: 'sidebar content';
   grid-template-rows: 1fr;
   grid-template-columns: 210px auto;
   position: relative;
@@ -72,31 +72,33 @@ ul {
   width: 1200px;
 }
 
-
-
 /* Логотип */
 .logo {
   display: flex;
-  align-items: center ;
+  align-items: center;
   pointer-events: none;
 }
 
 .logo__img {
-width: 40px;
-height: 40px;
-border-radius: 50%;
-overflow: hidden;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
 }
 
 .logo__text {
   font-size: 30px;
   font-weight: 900;
-    margin-left: 20px;
+  margin-left: 20px;
 }
 
 .content {
   grid-area: content;
-} 
+}
+
+.loader {
+  margin: 20px 20px;
+}
 
 /* Футер */
 .footer {
@@ -104,5 +106,5 @@ overflow: hidden;
   display: flex;
   align-items: center;
   padding: 15px;
-  color: rgb(224, 229, 243)
+  color: rgb(224, 229, 243);
 }

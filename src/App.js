@@ -1,14 +1,19 @@
 import './App.css';
-import Sidebar from './components/sidebar/sidebar';
+import React, { Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from './Redux/redux-store';
 import StartPage from './components/startPage/startPage';
-import DialogsContainer from './components/dialogs/dialogsContainer';
-import UsersContainer from './components/Users/UsersContainer';
-import ProfileContainer from './components/profile/profileContainer';
+import Sidebar from './components/sidebar/sidebar';
+// import DialogsContainer from './components/dialogs/dialogsContainer';
+// import UsersContainer from './components/Users/UsersContainer';
+// import ProfileContainer from './components/profile/profileContainer';
 import HeaderContainer from './components/header/headerContainer';
 import Login from './components/login/login';
-import store from './Redux/redux-store';
-import { Provider } from 'react-redux';
+
+const DialogsContainer = lazy(() => import('./components/dialogs/dialogsContainer'));
+const UsersContainer = lazy(() => import('./components/Users/UsersContainer'));
+const ProfileContainer = lazy(() => import('./components/profile/profileContainer'));
 
 const App = (props) => {
   return (
@@ -19,7 +24,8 @@ const App = (props) => {
       <div className="main-container">
         <Sidebar />
         <div className="content">
-        <Routes>
+          <Suspense fallback={<div className="loader">Loading...</div>}>
+              <Routes>
           <Route path='/'
                  element={<StartPage />} />
           <Route path='/profile/:userID'
@@ -36,8 +42,9 @@ const App = (props) => {
               <main style={{ padding: "1rem" }}>
                 <p>There's nothing here!</p>
               </main>}
-          />
+                  />
         </Routes>
+        </Suspense>
         </div>
       </div>
     </div>
