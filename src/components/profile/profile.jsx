@@ -19,6 +19,7 @@ const Profile = props => {
         status={props.status}
         updateStatus={props.updateStatus}
         isOwner={props.isOwner}
+        addUserPhoto={props.addUserPhoto}
       />
       <div className={styles.wrapper}>
         <MyPosts

@@ -6,8 +6,8 @@ const SET_USER_PROFILE = "PROFILE/SET_USER_PROFILE";
 const SET_USER_ID = "PROFILE/SET_USER_ID";
 const TOGGLE_IS_REQUESTS_IN_PROGRESS = "PROFILE/TOGGLE_IS_REQUESTS_IN_PROGRESS"
 const TOGGLE_IS_FETCHING_PROFILE = "PROFILE/TOGGLE_IS_FETCHING_PROFILE"
-
 const SET_STATUS = "PROFILE/SET_STATUS";
+const SAVE_PHOTO_SUCCESS = "SAVE_PHOTO_SUCCESS";
 
 let initialState = {
   PostsData: [
@@ -73,6 +73,16 @@ export const profileReducer = (state = initialState, action) => {
       }
     }
 
+    case SAVE_PHOTO_SUCCESS: {
+      return {
+        ...state,
+        Profile: {
+          ...state.Profile,
+          photos: action.photos
+        }
+      }
+    }
+      
     default: return state;
   }
 };
@@ -84,7 +94,7 @@ export const setUserID = (userID) =>({type: SET_USER_ID, userID});
 export const toggleIsFetchingProfile = (isFetching) =>({type: TOGGLE_IS_FETCHING_PROFILE, isFetching});
 export const toggleIsRequestsInProgress = (isRequestsInProgress) =>({type: TOGGLE_IS_REQUESTS_IN_PROGRESS, isRequestsInProgress});
 export const setStatus = (status) => ({ type: SET_STATUS, status });
-
+export const savePhotoSuccess = (photos) => ({ type: SAVE_PHOTO_SUCCESS, photos});
 
 export const getProfileThunkCreator = (userId) => {
   return async (dispatch) => {
@@ -108,10 +118,18 @@ export const getStatusThunkCreator = (userID) => {
 export const updateStatusThunkCreator = (status) => {
   return async (dispatch) => {
     let response = await ProfileAPI.updateStatus(status)
-
+debugger
         if (response.data.resultCode === 0) {
           dispatch(setStatus(status))
         };
   };
 };
 
+export const addUserPhotoThunkCreator = (file) => {
+  return async (dispatch) => {
+    let response = await ProfileAPI.addUserPhoto(file)
+    if (response.resultCode === 0) {
+      dispatch(savePhotoSuccess(response.data.photos));
+    };
+  };
+}

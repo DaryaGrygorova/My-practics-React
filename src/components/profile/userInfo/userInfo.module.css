@@ -1,60 +1,85 @@
 .wrapper {
-    height: 300px;
-    object-fit: cover ;
+  height: 300px;
+  object-fit: cover;
 }
 
 .thumb {
-    position: relative;
-    display: flex;
-    padding: 15px;
-    min-height: 165px;
-    background-color: #e0e5f3;
+  position: relative;
+  display: flex;
+  padding: 15px;
+  min-height: 165px;
+  background-color: #e0e5f3;
 }
 
 .photo {
-    position: absolute;
-    top: -50px;
-    width: 180px;
-    padding: 2px;
-    border: 1px solid rgba(255, 255, 255, .8)
+  position: absolute;
+  top: -50px;
+  width: 180px;
+  padding: 2px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
 }
 
 .description {
-    margin-left: 230px;
+  margin-left: 230px;
 }
 
 .name {
-    margin-bottom: 10px;
-    font-size: 36px;
-    font-weight: 900;
-    color: black;
+  margin-bottom: 10px;
+  font-size: 36px;
+  font-weight: 900;
+  color: black;
 }
 
 .about {
-    font-size: 14px;
-    margin-bottom: 10px;
-    color: rgba(40, 44, 52, .8);
-    font-style: italic;
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: rgba(40, 44, 52, 0.8);
+  font-style: italic;
 }
 
 .status {
-    display: block;
-    max-width: 100%;
-    min-height: 20px;
-    font-size: 20px;
-    margin-bottom: 10px;
-    color: black;
-    font-style: italic;
-    border-bottom: 1px solid #b1b7c5;
+  display: block;
+  max-width: 100%;
+  min-height: 20px;
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: black;
+  font-style: italic;
+  border-bottom: 1px solid #b1b7c5;
 }
 
-.input, .input:focus-within, .input:focus {
-    display: block;
-    margin-bottom: 10px;
-    padding: 5px;
-    max-width: 100%;
-    border: 1px solid #b1b7c5;
-    border-radius: 4px;
-    font-size: 20px;
+.input,
+.input:focus-within,
+.input:focus {
+  display: block;
+  margin-bottom: 10px;
+  padding: 5px;
+  max-width: 100%;
+  border: 1px solid #b1b7c5;
+  border-radius: 4px;
+  font-size: 20px;
 }
 
+.photoButton {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: 85px;
+  left: 150px;
+  font-size: 34px;
+  text-align: center;
+  padding: auto;
+  color: rgba(231, 237, 251, 0.5);
+  overflow: hidden;
+  border: 1px solid rgba(231, 237, 251, 0.5);
+  border-radius: 50%;
+  background-color: transparent;
+  transition: background-color 250ms linear, color 300ms linear;
+}
+
+.photoButton:hover,
+.photoButton:focus {
+  background-color: rgba(231, 237, 251, 0.5);
+  color: rgb(231, 237, 251);
+  border: 1px solid rgb(231, 237, 251);
+}

@@ -12,7 +12,6 @@ const LoginForm = props => {
     { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void }
   ) => {
     setSubmitting(false);
-    console.log(setSubmitting);
     props.logIn(values.email, values.password, values.rememberMe);
   };
 

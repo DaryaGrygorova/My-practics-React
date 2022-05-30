@@ -4,6 +4,7 @@ import {
   addPost, getProfileThunkCreator,
   getStatusThunkCreator, setUserID,
   updateStatusThunkCreator,
+  addUserPhotoThunkCreator,
 } from '../../Redux/Reducers/profile-reducer';
 import { connect } from 'react-redux';
 import Preloader from '../../common/preloader/isFetching_preloader';
@@ -21,11 +22,12 @@ class ProfileContainer extends React.Component {
     };
 
   componentDidUpdate(prevProps, prevState, snapShot) { 
-
     if (this.props.UserID !== prevProps.UserID
       && !this.props.isFetching
       && !this.props.toggleIsRequestsInProgress)
-    { this.onPageChanged(this.props.UserID);}
+    { this.onPageChanged(this.props.UserID); }
+
+    
   };
 
   onPageChanged = (userId) => {
@@ -40,7 +42,8 @@ class ProfileContainer extends React.Component {
     return ( <div>
       {this.props.isFetching || this.props.isRequestsInProgress ? <Preloader /> : null}
       <Profile {...this.props} onPageChanged={this.onPageChanged.bind(this)}
-        isOwner={this.props.UserID === this.props.authorizedUserId && !!this.props.authorizedUserId} />
+        isOwner={this.props.UserID === this.props.authorizedUserId && !!this.props.authorizedUserId}
+        addUserPhoto={this.props.addUserPhoto}/>
       </div>)
   };
 };
@@ -64,6 +67,7 @@ export default compose(
       getProfile: getProfileThunkCreator, 
       getStatus: getStatusThunkCreator,
       updateStatus: updateStatusThunkCreator,
+      addUserPhoto: addUserPhotoThunkCreator,
     }),
   withAuthRedirect
 )

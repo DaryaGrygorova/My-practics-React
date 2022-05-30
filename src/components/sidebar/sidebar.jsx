@@ -4,7 +4,6 @@ import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 const Sidebar = React.memo(props => {
-  console.log('sidebar render');
   return (
     <aside className={styles.sidebar}>
       <nav>
