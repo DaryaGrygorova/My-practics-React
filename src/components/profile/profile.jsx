@@ -14,7 +14,12 @@ const Profile = props => {
 
   return (
     <main className="content">
-      <UserInfo Profile={props.Profile} status={props.status} updateStatus={props.updateStatus} />
+      <UserInfo
+        Profile={props.Profile}
+        status={props.status}
+        updateStatus={props.updateStatus}
+        isOwner={props.isOwner}
+      />
       <div className={styles.wrapper}>
         <MyPosts
           PostsData={props.PostsData}

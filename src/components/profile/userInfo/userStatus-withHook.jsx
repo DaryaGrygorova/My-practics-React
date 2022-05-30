@@ -1,41 +1,48 @@
 import styles from './userInfo.module.css';
 import React, { useEffect, useState } from 'react';
 
-const UserStatusWithHook = (props) => {
-
-  let [editMode, setEditMode ] = useState(false);
-  let [status, setStatus ] = useState('');
+const UserStatusWithHook = props => {
+  let [editMode, setEditMode] = useState(false);
+  let [status, setStatus] = useState('');
 
   useEffect(() => {
-    setStatus(props.status)},[props.status]);
+    setStatus(props.status);
+  }, [props.status]);
 
-  const activateEditMode = () => {setEditMode(true)};
+  const activateEditMode = () => {
+    setEditMode(true);
+  };
   const deactivateEditMode = () => {
-    setEditMode(false)
+    setEditMode(false);
     props.updateStatus(status);
   };
 
-  const onChangeStatus = (event) => {
-    setStatus(event.currentTarget.value)};
+  const onChangeStatus = event => {
+    setStatus(event.currentTarget.value);
+  };
 
-
-     return (
-      <div>
-        {(!editMode)
-        ? <p className={styles.status}
-              onDoubleClick={activateEditMode}
-          >
+  return (
+    <div>
+      {props.isOwner ? (
+        !editMode ? (
+          <p className={styles.status} onDoubleClick={activateEditMode}>
             {props.status}
           </p>
-        : <input className={styles.input}
-                 value={status}
-                 type="text"
-                 onBlur={deactivateEditMode}
-                 onChange={onChangeStatus}
-                 autoFocus
-          />}
-      </div>
-    );
-  };
+        ) : (
+          <input
+            className={styles.input}
+            value={status}
+            type="text"
+            onBlur={deactivateEditMode}
+            onChange={onChangeStatus}
+            autoFocus
+          />
+        )
+      ) : (
+        <p className={styles.status}>{props.status}</p>
+      )}
+    </div>
+  );
+};
 
 export default UserStatusWithHook;

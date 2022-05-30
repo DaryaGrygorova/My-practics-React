@@ -39,7 +39,8 @@ class ProfileContainer extends React.Component {
   render() {
     return ( <div>
       {this.props.isFetching || this.props.isRequestsInProgress ? <Preloader /> : null}
-        <Profile {...this.props} onPageChanged={this.onPageChanged.bind(this)} />
+      <Profile {...this.props} onPageChanged={this.onPageChanged.bind(this)}
+        isOwner={this.props.UserID === this.props.authorizedUserId && !!this.props.authorizedUserId} />
       </div>)
   };
 };
@@ -54,7 +55,7 @@ let mapStateToProps = (state) => {
     status: state.ProfilePage.status,
     authorizedUserId: state.AuthPage.UserID,
     isAuth: state.AuthPage.isAuth,
-    isRequestsInProgress: state.ProfilePage.isRequestsInProgress
+    isRequestsInProgress: state.ProfilePage.isRequestsInProgress,
  }};
 
 export default compose(
