@@ -6,15 +6,12 @@ import { useParams } from 'react-router-dom';
 
 const Profile = props => {
   let params = useParams();
-  let userID = props.UserID;
-  if (!userID) {
-    userID = props.authorizedUserId;
-  }
   let currentUserID = parseInt(params.id);
+  let userID = props.UserID;
   if (currentUserID !== userID && currentUserID) {
-    props.onPageChanged(currentUserID);
+    props.setUserID(currentUserID);
   }
-  console.log('profile render');
+
   return (
     <main className="content">
       <UserInfo Profile={props.Profile} status={props.status} updateStatus={props.updateStatus} />

@@ -3,7 +3,7 @@ import Profile from './profile';
 import {
   addPost, getProfileThunkCreator,
   getStatusThunkCreator, setUserID,
-  toggleIsFetchingProfile, updateStatusThunkCreator,
+  updateStatusThunkCreator,
 } from '../../Redux/Reducers/profile-reducer';
 import { connect } from 'react-redux';
 import Preloader from '../../common/preloader/isFetching_preloader';
@@ -13,30 +13,35 @@ import { compose } from 'redux';
 class ProfileContainer extends React.Component {
 
   componentDidMount() {
-    console.log ("did mout profile")
     let userID = this.props.UserID;
-    debugger
-    if (!userID) {userID = this.props.authorizedUserId}
-    this.onPageChanged(userID);
-     };
+    if (!userID) {
+      userID = this.props.authorizedUserId
+      this.onPageChanged(userID)
+    };
+    };
 
   componentDidUpdate(prevProps, prevState, snapShot) { 
-    debugger
-    if (this.props.UserID !== prevProps.UserID )
+
+    if (this.props.UserID !== prevProps.UserID
+      && !this.props.isFetching
+      && !this.props.toggleIsRequestsInProgress)
     { this.onPageChanged(this.props.UserID);}
   };
 
-  onPageChanged = (UserID) => {
-    this.props.setUserID(UserID);
-    this.props.getProfile(UserID);
-    this.props.getStatus(UserID);
+  onPageChanged = (userId) => {
+    if (!this.props.isFetching && !this.props.isRequestsInProgress) {
+      this.props.setUserID(userId);
+      this.props.getProfile(userId);
+      this.props.getStatus(userId);
+    }
   };
 
   render() {
     return ( <div>
-      {this.props.isFetching ? <Preloader /> : null}
-      <Profile {...this.props} onPageChanged={this.onPageChanged.bind(this)} />
-      </div> )};
+      {this.props.isFetching || this.props.isRequestsInProgress ? <Preloader /> : null}
+        <Profile {...this.props} onPageChanged={this.onPageChanged.bind(this)} />
+      </div>)
+  };
 };
 
 let mapStateToProps = (state) => {
@@ -49,13 +54,16 @@ let mapStateToProps = (state) => {
     status: state.ProfilePage.status,
     authorizedUserId: state.AuthPage.UserID,
     isAuth: state.AuthPage.isAuth,
+    isRequestsInProgress: state.ProfilePage.isRequestsInProgress
  }};
 
 export default compose(
   connect (mapStateToProps,
       {addPost, setUserID,
-        getProfile: getProfileThunkCreator, toggleIsFetchingProfile,
-        getStatus: getStatusThunkCreator, updateStatus: updateStatusThunkCreator}),
+      getProfile: getProfileThunkCreator, 
+      getStatus: getStatusThunkCreator,
+      updateStatus: updateStatusThunkCreator,
+    }),
   withAuthRedirect
 )
   (ProfileContainer);
