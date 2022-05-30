@@ -1,7 +1,7 @@
 import styles from './post.module.css';
 import React from 'react';
-import likeHeart from '../../images/like.svg';
-import prettyLady from '../../images/PrettyLady.webp';
+import likeHeart from '../../../images/likeHeart.svg';
+import prettyLady from '../../../images/prettyLady-icon.webp';
 
 const Post = React.memo(props => {
   return (
