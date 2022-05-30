@@ -13,19 +13,26 @@ import { compose } from 'redux';
 class ProfileContainer extends React.Component {
 
   componentDidMount() {
+    console.log ("did mout profile")
     let userID = this.props.UserID;
-    if (!userID) {
-      userID = this.props.authorizedUserId}
-    this.props.getProfile(userID)
-    this.props.getStatus(userID)
+    debugger
+    if (!userID) {userID = this.props.authorizedUserId}
+    this.onPageChanged(userID);
+     };
+
+  componentDidUpdate(prevProps, prevState, snapShot) { 
+    debugger
+    if (this.props.UserID !== prevProps.UserID )
+    { this.onPageChanged(this.props.UserID);}
   };
 
   onPageChanged = (UserID) => {
     this.props.setUserID(UserID);
-    this.props.getProfile(UserID)};
+    this.props.getProfile(UserID);
+    this.props.getStatus(UserID);
+  };
 
   render() {
-
     return ( <div>
       {this.props.isFetching ? <Preloader /> : null}
       <Profile {...this.props} onPageChanged={this.onPageChanged.bind(this)} />
@@ -34,7 +41,6 @@ class ProfileContainer extends React.Component {
 
 let mapStateToProps = (state) => {
   return {
-    CurrentUserID: state.ProfilePage.CurrentUserID,
     Profile: state.ProfilePage.Profile,
     PostsData: state.ProfilePage.PostsData,
     NewPostText: state.ProfilePage.NewPostText,

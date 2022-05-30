@@ -4,19 +4,26 @@ import UserInfo from './userInfo/userInfo';
 import MyPosts from './myPosts/myPosts';
 import { useParams } from 'react-router-dom';
 
-const Profile = (props) => {
+const Profile = props => {
   let params = useParams();
-  let userID = params.userID;
-  if (userID !== props.UserID) {
-    props.onPageChanged(userID);
-  };
-
+  let userID = props.UserID;
+  if (!userID) {
+    userID = props.authorizedUserId;
+  }
+  let currentUserID = parseInt(params.id);
+  if (currentUserID !== userID && currentUserID) {
+    props.onPageChanged(currentUserID);
+  }
+  console.log('profile render');
   return (
-    <main className='content'>
+    <main className="content">
       <UserInfo Profile={props.Profile} status={props.status} updateStatus={props.updateStatus} />
       <div className={styles.wrapper}>
-        <MyPosts PostsData={props.PostsData} NewPostText={props.NewPostText}
-                 onClick={props.addPost} />
+        <MyPosts
+          PostsData={props.PostsData}
+          NewPostText={props.NewPostText}
+          onClick={props.addPost}
+        />
       </div>
     </main>
   );
